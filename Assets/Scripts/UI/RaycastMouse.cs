@@ -14,7 +14,12 @@ public class RaycastMouse : MonoBehaviour
 	private Vector2 mouseReg;
 	private Vector2 mouseCoord;
 	private Texture mouseTex;
-	
+	public Player playerScript;
+
+	// Use this for initialization
+	void Start () {
+	}
+
 	void OnDisable()
 	{
 		Screen.showCursor = true;	
@@ -32,6 +37,7 @@ public class RaycastMouse : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) 
 		{
+			Debug.Log(hit.point);
 			switch(hit.collider.tag)
 			{
 				case "Enemy":
@@ -57,10 +63,12 @@ public class RaycastMouse : MonoBehaviour
 			mouseTex = iconArrow;
 			mouseReg = arrowRegPoint;
 		}
-
-        GUI.depth = 0;
 		//update texture object.
+        GUI.depth = 0;
+		GUI.DrawTexture( new Rect(mouseCoord.x-mouseReg.x, Screen.height-mouseCoord.y - mouseReg.y, mouseTex.width, mouseTex.height), mouseTex, ScaleMode.StretchToFill, true, 10.0f);
+	
 		mouseCoord = Input.mousePosition;
-		//GUI.DrawTexture( new Rect(mouseCoord.x-mouseReg.x, Screen.height-mouseCoord.y - mouseReg.y, mouseTex.width, mouseTex.height), mouseTex, ScaleMode.StretchToFill, true, 10.0f);
+		Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
+		playerScript.UpdateDirection(worldPos);
 	}
 } 

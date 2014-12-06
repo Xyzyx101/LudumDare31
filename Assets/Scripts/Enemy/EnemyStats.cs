@@ -5,10 +5,14 @@ public class EnemyStats : MonoBehaviour
 {
     public float maxHP = 100;
     public float hp { set; get; }
+    public float strength = 1;
+    public float damage { set; get; }
+    private int gameDiff;
 
     void Awake()
     {
-        hp = maxHP;
+        hp = maxHP * gameDiff;
+        damage = strength * gameDiff;
     }
 
     void Update()

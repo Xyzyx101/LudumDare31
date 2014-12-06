@@ -27,6 +27,6 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		other.gameObject.SendMessage("DoDamage", damage);
+		other.gameObject.SendMessageUpwards("DoDamage", damage);
 	}
 }

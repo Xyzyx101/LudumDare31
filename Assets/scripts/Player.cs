@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public float speed = 10.0F;
+	public float speed = 150.0F;
+	public float turnSpeed = 0.1f;
 	public Transform target;
 
 	public GameObject primaryWeapon;
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour {
 
 	private float vSpeed;
 	private float hSpeed;
+
+	private float desiredAngle;
 
 	// Use this for initialization
 	void Start () {
@@ -21,21 +24,31 @@ public class Player : MonoBehaviour {
 		if (primaryWeapon != null && primaryAttack) {
 			primaryWeapon.SetActive(true);
 		}
-
 		bool secondaryAttack = Input.GetMouseButton(1);
 
+		if ( !primaryAttack && !secondaryAttack) {
+			float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
+			Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
+			transform.localEulerAngles = new Vector3(0, angle, 0);
+		}
 
-		vSpeed = Input.GetAxis("Vertical") * speed;
-		hSpeed = Input.GetAxis("Horizontal") * speed;
+
+
+
+		//Quaternion desiredQuat = Quaternion.Euler(new Vector3(0, desiredAngle, 0));
+		//transform.localRotation = Quaternion.Lerp(tranform.localRotation, desiredRotation, turnSpeed * Time.deltaTime);
+
+		vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		vSpeed *= Time.deltaTime;
 		hSpeed *= Time.deltaTime;
-		transform.Translate(hSpeed, vSpeed, 0, null);
+		transform.Translate(hSpeed, 0, vSpeed, null);
 	}
 	
-	public void UpdateDirection(Vector3 targetX) {
-		//Vector3 targetDir = target.position - transform.position;
-		Vector3 targetDir = targetX - transform.position;
-		float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-		transform.localRotation = Quaternion.Euler(new Vector3(0, 0, targetAngle));
+	public void UpdateDirection(Vector3 target) {
+		Vector3 targetDir = target - transform.position;
+		desiredAngle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
 	}
 }
+
+;

@@ -37,7 +37,6 @@ public class RaycastMouse : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) 
 		{
-			Debug.Log(hit.point);
 			switch(hit.collider.tag)
 			{
 				case "Enemy":

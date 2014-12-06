@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 	public int roomLevelIncrement = 5;
 	public int roomLevelStart = 10;
 	public int roomLevelVariation = 8;
-	public int roomLeve{ get; };
+    protected int roomLevel;
 
 	
 	private void Awake () 
@@ -79,5 +79,10 @@ public class GameManager : MonoBehaviour
 		currentState = newState;
 		currentState.OnStateEntered();
 	}
+
+    public int GetRoomLevel()
+    {
+        return roomLevel;
+    }
 	
 }

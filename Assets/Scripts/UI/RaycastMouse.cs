@@ -61,6 +61,6 @@ public class RaycastMouse : MonoBehaviour
         GUI.depth = 0;
 		//update texture object.
 		mouseCoord = Input.mousePosition;
-		GUI.DrawTexture( new Rect(mouseCoord.x-mouseReg.x, Screen.height-mouseCoord.y - mouseReg.y, mouseTex.width, mouseTex.height), mouseTex, ScaleMode.StretchToFill, true, 10.0f);
+		//GUI.DrawTexture( new Rect(mouseCoord.x-mouseReg.x, Screen.height-mouseCoord.y - mouseReg.y, mouseTex.width, mouseTex.height), mouseTex, ScaleMode.StretchToFill, true, 10.0f);
 	}
 } 

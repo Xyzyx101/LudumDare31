@@ -24,7 +24,7 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void ShouldIWander()
     {
-        if (ShouldWander) // wander when not turning
+        if (ShouldWander) // wanter when not turning
         {
             Wander();
             ShouldWander = false;

@@ -31,7 +31,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
 	//avoid collisions
 	public void AvoidHullCollisions(float distance)
 	{
-		steering += DoAvoidCollisions(distance);
+		steering += DoAvoidHullCollisions(distance);
 	}
 	
 	public void AdvancedCollisions(Sensor left, Sensor right)
@@ -95,7 +95,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
     	Vector3 circleCenter = objectToMove.velocity.normalized * wanderCircleDistance;
     
     	//Calculate the displacement force 
-    	Vector3 displacement = new Vector3(0, wanderCircleRadius, 0);
+    	Vector3 displacement = new Vector3(0, 0, wanderCircleRadius);
     
     	//Randomly change the vector direction by making it change its current angle
     	displacement = SetAngle(displacement, wanderAngle);
@@ -111,11 +111,11 @@ public abstract class SteeringBehaviour : MonoBehaviour
 	{
     	float length = vector.magnitude;
     	vector.x = Mathf.Cos(rotation) * length;
-    	vector.y = Mathf.Sin(rotation) * length;
+    	vector.z = Mathf.Sin(rotation) * length;
 		return vector;
   	}
 	
-	private Vector3 DoAvoidCollisions(float distance)
+	private Vector3 DoAvoidHullCollisions(float distance)
 	{		
 		RaycastHit hit1;
 		Ray ray1 = new Ray(objectToMove.transform.position, objectToMove.velocity);
@@ -125,6 +125,12 @@ public abstract class SteeringBehaviour : MonoBehaviour
             Debug.DrawRay(ray1.origin, objectToMove.transform.position - hit1.transform.position, Color.green, 0.5f);
 			return (objectToMove.transform.position - hit1.transform.position);
 		}
+        else if (Physics.Raycast(ray1, out hit1, distance, (1 << 11)))
+        {
+            Debug.DrawRay(ray1.origin, ray1.direction * distance, Color.magenta, 0.5f);
+            Debug.DrawRay(ray1.origin, objectToMove.transform.position - objectToMove.transform.position * 2, Color.green, 0.5f);
+            return (hit1.transform.parent.position - objectToMove.transform.position);
+        }
         
 		return Vector3.zero;
 	}

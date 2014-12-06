@@ -5,6 +5,7 @@ public class EnemyHPBar : MonoBehaviour
 {
     public GameObject entity;
     public GameObject hpQuad;
+    private float quadMaxLength;
     private float hitPoints = 0;
     private float maxHitPoints = 0;
     float normalisedHealth;
@@ -12,11 +13,13 @@ public class EnemyHPBar : MonoBehaviour
 
     void Awake()
     {
-        maxHitPoints = entity.GetComponent<EnemyStats>().maxHP;
+       
     }
 
 	void Start () 
     {
+        maxHitPoints = entity.GetComponent<EnemyStats>().hp;
+        quadMaxLength = hpQuad.transform.localScale.x;
         hitPoints = entity.GetComponent<EnemyStats>().hp;
 	}
 	
@@ -31,7 +34,7 @@ public class EnemyHPBar : MonoBehaviour
 
         normalisedHealth = (float)hitPoints / maxHitPoints;
 
-        hpQuad.transform.localScale = new Vector3(normalisedHealth, hpQuad.transform.localScale.y, hpQuad.transform.localScale.z);
+        hpQuad.transform.localScale = new Vector3(quadMaxLength * normalisedHealth, hpQuad.transform.localScale.y, hpQuad.transform.localScale.z);
 
         if (normalisedHealth <= 0.25f)
         {

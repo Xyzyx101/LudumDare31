@@ -14,8 +14,12 @@ public class GoblinBehaviour : SteeringBehaviour
     public float seperation = 1;
     private bool isAlone = true;
     private bool ShouldWander = true;
-    private bool Agro = false;
     private GameObject partner;
+    private GameObject target;
+
+    public GameObject primaryWeapon;
+    private float desiredAngle;
+    bool primaryAttack;
 
     void Awake()
     {
@@ -24,7 +28,15 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void Update()
     {
-
+        if(target != null && Vector3.Distance(transform.position, target.transform.position) < 2.5)
+        {
+            primaryAttack = true;
+            transform.LookAt(target.transform.position, Vector3.up);
+        }
+        if (primaryWeapon != null && primaryAttack)
+        {
+            primaryWeapon.SetActive(true);
+        }
     }
 
     void FixedUpdate()
@@ -49,7 +61,8 @@ public class GoblinBehaviour : SteeringBehaviour
             }
             else if (temp.tag == "Player" && !isAlone)
             {
-                Seek(temp.transform.position, 1.5f);
+                Seek(temp.transform.position, 2.5f);
+                target = temp;
             }
             else if (temp.tag == "Goblin" && partner == null)
             {
@@ -78,12 +91,16 @@ public class GoblinBehaviour : SteeringBehaviour
                 ShouldWander = true;
             }
         }
-
-
     }
 
     void OnTriggerEnter(Collider other)
     {
 
+    }
+
+    private void UpdateDirection()
+    {
+        Vector3 targetDir = target.transform.position - transform.position;
+        desiredAngle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
     }
 }

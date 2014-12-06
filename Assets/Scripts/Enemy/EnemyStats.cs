@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyStats : MonoBehaviour 
 {
-    public float maxHP = 100;
+    public float baseHP = 100;
     public float hp { set; get; }
     public float strength = 1;
     public float damage { set; get; }
@@ -11,7 +11,8 @@ public class EnemyStats : MonoBehaviour
 
     void Awake()
     {
-        hp = maxHP * gameDiff;
+        gameDiff = GameManager.Instance.GetRoomLevel();
+        hp = baseHP * gameDiff;
         damage = strength * gameDiff;
     }
 

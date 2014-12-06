@@ -23,12 +23,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		bool primaryAttack = Input.GetMouseButton(0);
-		if (primaryWeapon != null && primaryAttack) {
+
+		if (primaryWeapon != null && primaryAttack) 
+        {
 			primaryWeapon.SetActive(true);
 		}
 		bool secondaryAttack = Input.GetMouseButton(1);
 
-		if ( !primaryAttack && !secondaryAttack) {
+		if ( !primaryAttack && !secondaryAttack) 
+        {
 			float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
 			Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
 			transform.localEulerAngles = new Vector3(0, angle, 0);
@@ -47,7 +50,8 @@ public class Player : MonoBehaviour {
 		transform.Translate(hSpeed, 0, vSpeed, null);
 	}
 	
-	public void UpdateDirection(Vector3 target) {
+	public void UpdateDirection(Vector3 target) 
+    {
 		Vector3 targetDir = target - transform.position;
 		desiredAngle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
 	}

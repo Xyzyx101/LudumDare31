@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/UI/RaycastMouse.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HallwayTrigger.cs">
     <Files>
-      <File FileName="Assets/scripts/Player.cs" Line="36" Column="77" />
-      <File FileName="Assets/scripts/UI/RaycastMouse.cs" Line="69" Column="36" />
-      <File FileName="Assets/scripts/Weapon.cs" Line="30" Column="42" />
+      <File FileName="Assets\Scripts\HallwayTrigger.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\Enemy\Sensor.cs" Line="34" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

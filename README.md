@@ -1,4 +1,5 @@
-LudumDare31
+Ludum Dare 31
 ===========
 
-Ludum Dare 31 - Theme - Entire Game on One Screen
+Ludum Dare 31 
+Entire Game on One Screen

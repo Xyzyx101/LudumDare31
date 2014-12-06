@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Wepons\Sword.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapon.cs">
     <Files>
       <File FileName="Assets\Scripts\States\GameState.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="18" Column="41" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="40" Column="30" />
       <File FileName="Assets\Scripts\States\StateGamePlaying.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Wepons\Sword.cs" Line="4" Column="37" />
+      <File FileName="Assets\Scripts\Weapon.cs" Line="7" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//globals
+enum stats{
+	Vitality,
+	Speed,
+	Dextarity,
+	Defense,
+	Strength
+};
+
 public class GameManager : MonoBehaviour 
 {
 	public static GameManager Instance { get { return instance; } }
@@ -15,7 +24,7 @@ public class GameManager : MonoBehaviour
 	public int roomLevelIncrement = 5;
 	public int roomLevelStart = 10;
 	public int roomLevelVariation = 8;
-	private int roomLevel;
+	public int roomLeve{ get; };
 
 	
 	private void Awake () 
@@ -70,4 +79,5 @@ public class GameManager : MonoBehaviour
 		currentState = newState;
 		currentState.OnStateEntered();
 	}
+	
 }

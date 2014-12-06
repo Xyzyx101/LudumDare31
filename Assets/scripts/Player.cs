@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 	private float vSpeed;
 	private float hSpeed;
 
+	private int[] playerStats = new int[5];
+
 	private float desiredAngle;
 
 	// Use this for initialization

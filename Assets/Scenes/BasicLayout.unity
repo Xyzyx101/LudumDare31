@@ -237,6 +237,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c566f0e7649d943f79dc2f9a06803e39, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c566f0e7649d943f79dc2f9a06803e39, type: 2}
   m_RootGameObject: {fileID: 1591913227}
@@ -252,7 +256,7 @@ GameObject:
   - 4: {fileID: 112548754}
   - 65: {fileID: 112548755}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,10 +354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 930925939}
-  wall1: {fileID: 1484823265}
-  room2: {fileID: 400606196}
-  wall2: {fileID: 867465419}
+  hallNum: 4
+  wall1: {fileID: 867465419}
+  wall2: {fileID: 1484823265}
+  roomManager: {fileID: 1106382008}
 --- !u!65 &236080288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -420,6 +424,10 @@ Prefab:
     - target: {fileID: 6500000, guid: c566f0e7649d943f79dc2f9a06803e39, type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c566f0e7649d943f79dc2f9a06803e39, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c566f0e7649d943f79dc2f9a06803e39, type: 2}
@@ -674,7 +682,7 @@ GameObject:
   - 64: {fileID: 493512097}
   - 23: {fileID: 493512096}
   m_Layer: 0
-  m_Name: Hall 2
+  m_Name: Hall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +702,7 @@ Transform:
   - {fileID: 839633967}
   - {fileID: 833604074}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!23 &493512096
 Renderer:
   m_ObjectHideFlags: 0
@@ -831,7 +839,7 @@ GameObject:
   - 4: {fileID: 518282151}
   - 65: {fileID: 518282152}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1152,7 @@ GameObject:
   - 4: {fileID: 833604074}
   - 65: {fileID: 833604075}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,10 +1210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 930925939}
+  hallNum: 1
   wall1: {fileID: 833604073}
-  room2: {fileID: 1787444412}
   wall2: {fileID: 1902944435}
+  roomManager: {fileID: 1106382008}
 --- !u!65 &839633966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1240,7 +1248,7 @@ GameObject:
   - 4: {fileID: 867465420}
   - 65: {fileID: 867465421}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,10 +1473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 1787444412}
+  hallNum: 2
   wall1: {fileID: 112548753}
-  room2: {fileID: 392252061}
   wall2: {fileID: 1860636251}
+  roomManager: {fileID: 1106382008}
 --- !u!65 &971091321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1493,7 +1501,7 @@ GameObject:
   - 64: {fileID: 985815302}
   - 23: {fileID: 985815301}
   m_Layer: 0
-  m_Name: Hall 1
+  m_Name: Hall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1553,7 +1561,56 @@ Transform:
   - {fileID: 236080289}
   - {fileID: 867465420}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 13
+--- !u!1 &1106382008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1106382010}
+  - 114: {fileID: 1106382009}
+  m_Layer: 0
+  m_Name: RoomManager
+  m_TagString: RoomManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1106382009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106382008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a3230adee55e439207885140610a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 930925939}
+  - {fileID: 1787444412}
+  - {fileID: 392252061}
+  - {fileID: 400606196}
+  halls:
+  - {fileID: 493512094}
+  - {fileID: 1745286578}
+  - {fileID: 1682475488}
+  - {fileID: 985815300}
+--- !u!4 &1106382010
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106382008}
+  m_LocalRotation: {x: -.707106888, y: 0, z: 0, w: .707106769}
+  m_LocalPosition: {x: -1.56893921, y: 3.24146271, z: 20.2035961}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130911290}
+  m_RootOrder: 0
 --- !u!1 &1219901780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1789,7 @@ GameObject:
   - 4: {fileID: 1372266744}
   - 65: {fileID: 1372266745}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,7 +1837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1443305821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1849,6 +1906,7 @@ MonoBehaviour:
   AgroSensor: {fileID: 1355321746}
   wanderTime: 1
   seperation: 1
+  primaryWeapon: {fileID: 0}
 --- !u!114 &1443305825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,7 +1929,7 @@ GameObject:
   - 4: {fileID: 1484823266}
   - 65: {fileID: 1484823267}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1929,10 +1987,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 392252061}
+  hallNum: 3
   wall1: {fileID: 1372266743}
-  room2: {fileID: 400606196}
   wall2: {fileID: 518282150}
+  roomManager: {fileID: 1106382008}
 --- !u!65 &1497472624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2123,7 +2181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1591913228
 Transform:
   m_ObjectHideFlags: 0
@@ -2192,6 +2250,7 @@ MonoBehaviour:
   AgroSensor: {fileID: 1281615852}
   wanderTime: 1
   seperation: 1
+  primaryWeapon: {fileID: 0}
 --- !u!114 &1591913232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2253,12 +2312,12 @@ GameObject:
   - 64: {fileID: 1682475491}
   - 23: {fileID: 1682475490}
   m_Layer: 0
-  m_Name: Hall 4
+  m_Name: Hall 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1682475489
 Transform:
   m_ObjectHideFlags: 0
@@ -2273,7 +2332,7 @@ Transform:
   - {fileID: 1497472625}
   - {fileID: 518282151}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!23 &1682475490
 Renderer:
   m_ObjectHideFlags: 0
@@ -2326,12 +2385,12 @@ GameObject:
   - 64: {fileID: 1745286580}
   - 23: {fileID: 1745286579}
   m_Layer: 0
-  m_Name: Hall 3
+  m_Name: Hall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1745286579
 Renderer:
   m_ObjectHideFlags: 0
@@ -2386,7 +2445,7 @@ Transform:
   - {fileID: 971091319}
   - {fileID: 1860636252}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &1755439114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2606,7 @@ GameObject:
   - 4: {fileID: 1860636252}
   - 65: {fileID: 1860636253}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,7 +2686,7 @@ GameObject:
   - 4: {fileID: 1902944436}
   - 65: {fileID: 1902944437}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2705,8 +2764,11 @@ MonoBehaviour:
   speed: 150
   turnSpeed: 1
   target: {fileID: 0}
+  hpPerVitality: 0
   primaryWeapon: {fileID: 1547945728}
   secondaryWeapon: {fileID: 0}
+  Armour: {fileID: 0}
+  ring: {fileID: 0}
 --- !u!135 &2028781336
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2925,7 +2987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2130911290}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &2130911285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,6 +3070,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 16.7700005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1106382010}
   - {fileID: 2113026204}
   m_Father: {fileID: 0}
   m_RootOrder: 2

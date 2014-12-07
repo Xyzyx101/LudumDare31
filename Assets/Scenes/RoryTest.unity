@@ -2077,8 +2077,11 @@ MonoBehaviour:
   speed: 150
   turnSpeed: 1
   target: {fileID: 0}
+  hpPerVitality: 0
   primaryWeapon: {fileID: 1544609215}
   secondaryWeapon: {fileID: 0}
+  Armour: {fileID: 0}
+  ring: {fileID: 0}
 --- !u!4 &1687081452
 Transform:
   m_ObjectHideFlags: 0

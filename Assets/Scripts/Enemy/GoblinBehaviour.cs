@@ -28,7 +28,12 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void Update()
     {
-        if(target != null && Vector3.Distance(transform.position, target.transform.position) < 2.5)
+
+    }
+
+    void FixedUpdate()
+    {
+        if (target != null && Vector3.Distance(transform.position, target.transform.position) < 2.5)
         {
             primaryAttack = true;
             transform.LookAt(target.transform.position, Vector3.up);
@@ -37,10 +42,7 @@ public class GoblinBehaviour : SteeringBehaviour
         {
             primaryWeapon.SetActive(true);
         }
-    }
 
-    void FixedUpdate()
-    {
         WhatDo();
 
         AdvancedCollisions(LeftSensor, RightSensor);

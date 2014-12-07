@@ -72,11 +72,6 @@ public class GameManager : MonoBehaviour
 		currentState = newState;
 		currentState.OnStateEntered();
 	}
-
-    public int GetRoomLevel()
-    {
-        return roomLevel;
-    }
 	
     public void SetPLaying()
     {

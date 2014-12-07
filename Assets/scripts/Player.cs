@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
 
 	private void CalculatePlayerStats() 
 	{
+		//get the current hp so that we can proporly increase your hp
+		int prevHP = maxHP;
+
 		//get all the stuff from the equiped items
 		for(int i = 0; i < 5; i++)
 		{
@@ -149,6 +152,8 @@ public class Player : MonoBehaviour
 
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
+		currHP += maxHP - prevHP;
+
 		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
 		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
 	}

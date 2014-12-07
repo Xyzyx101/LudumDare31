@@ -16,8 +16,8 @@ public class Bow : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		int levelVar = GameManager.Instance.roomLevelVariation;
-		itemLevel = Mathf.FloorToInt(GameManager.Instance.GetRoomLevel() + (Random.Range(0, levelVar) - (levelVar * 0.5f)));
+		int levelVar = RoomManager.Instance.roomLevelVariation;
+		itemLevel = Mathf.FloorToInt(RoomManager.Instance.GetRoomLevel() + (Random.Range(0, levelVar) - (levelVar * 0.5f)));
 		
 		damage = Mathf.FloorToInt(itemLevel * DamageToLevelMultiplyer); //change this
 		

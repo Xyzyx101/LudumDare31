@@ -2,10 +2,41 @@
 using System.Collections;
 
 public class RoomManager : MonoBehaviour {
+	public static RoomManager Instance { get { return instance; } }
+	private static RoomManager instance = null;
+
+	public int roomLevelIncrement = 5;
+	public int roomLevelStart = 10;
+	public int roomLevelVariation = 8;
+	protected int roomLevel;
+
+	public GameObject[] objectsToSpawn;
+	public int minObjectsToSpawn = 0;
+	public int maxObjectsToSpawn = 3;
+
 
 	public GameObject[] rooms;
 
 	public GameObject[] halls;
+
+	public GameObject currRoom;
+
+	private void Awake () 
+	{
+		if (instance != null && instance != this)
+		{
+			Destroy(this.gameObject);
+			return;        
+		} 
+		else 
+		{
+			instance = this;
+		}
+		DontDestroyOnLoad(this.gameObject);
+		
+		//stuff for game(shoudl this be in game playing?    // Eventually
+		roomLevel = roomLevelStart;
+	}	
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +45,12 @@ public class RoomManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	
+	public int GetRoomLevel()
+	{
+		return roomLevel;
 	}
 
 	public void RoomTransition(int hallNum)
@@ -86,7 +123,11 @@ public class RoomManager : MonoBehaviour {
 		{
 			if(room == i)
 			{
+				currRoom = rooms[i];
+				roomLevel += roomLevelIncrement;
+				//delete everything in room and restart
 				rooms[i].SetActive(true);
+				MakeRoom();
 			}
 			else
 			{
@@ -112,6 +153,29 @@ public class RoomManager : MonoBehaviour {
 				halls[i].GetComponentInChildren<HallwayTrigger>().wall2.SetActive(false);
 				halls[i].SetActive(false);
 			}
+		}
+	}
+
+	private void MakeRoom()
+	{
+
+		//destroy everything incurr room
+		foreach(Transform toDelete in currRoom.transform) 
+		{
+			Destroy(toDelete.gameObject);
+		}
+
+		//then spawn stuff in the current room
+		for( int i = 0; i < Random.Range(minObjectsToSpawn, maxObjectsToSpawn + 1); i++)
+		{
+			int objectToSpawn = Random.Range(0, objectsToSpawn.Length); 
+			Vector3 thisSize = currRoom.transform.GetComponent<Renderer>().bounds.size;
+			Vector3 spawnPlace = currRoom.transform.position;
+			spawnPlace.y += 0.5f;
+			spawnPlace.x += Random.Range(-thisSize.x * 0.45f, thisSize.x * 0.45f);
+			spawnPlace.z += Random.Range(-thisSize.z * 0.45f, thisSize.z * 0.45f);
+			GameObject spawnedObject = (GameObject)Instantiate(objectsToSpawn[objectToSpawn], spawnPlace, objectsToSpawn[objectToSpawn].transform.rotation);
+			spawnedObject.transform.parent = currRoom.transform;
 		}
 	}
 }

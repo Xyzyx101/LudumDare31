@@ -21,11 +21,6 @@ public class GameManager : MonoBehaviour
 	public StateGameIntro stateGameIntro{get;set;}
 	public StateGameMenu stateGameMenu{get;set;}
 
-	public int roomLevelIncrement = 5;
-	public int roomLevelStart = 10;
-	public int roomLevelVariation = 8;
-    protected int roomLevel;
-
 	
 	private void Awake () 
 	{
@@ -45,8 +40,6 @@ public class GameManager : MonoBehaviour
 		stateGameIntro = new StateGameIntro(this);
 		stateGameMenu = new StateGameMenu(this);
 
-		//stuff for game(shoudl this be in game playing?    // Eventually
-		roomLevel = roomLevelStart;
 	}	
 	
 	private void Start () 
@@ -79,10 +72,4 @@ public class GameManager : MonoBehaviour
 		currentState = newState;
 		currentState.OnStateEntered();
 	}
-
-    public int GetRoomLevel()
-    {
-        return roomLevel;
-    }
-	
 }

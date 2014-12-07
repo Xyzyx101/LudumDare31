@@ -350,10 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 930925939}
+  hallNum: 0
   wall1: {fileID: 1484823265}
-  room2: {fileID: 400606196}
   wall2: {fileID: 867465419}
+  roomManager: {fileID: 0}
 --- !u!65 &236080288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1202,10 +1202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 930925939}
+  hallNum: 0
   wall1: {fileID: 833604073}
-  room2: {fileID: 1787444412}
   wall2: {fileID: 1902944435}
+  roomManager: {fileID: 0}
 --- !u!65 &839633966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1545,10 +1545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 1787444412}
+  hallNum: 0
   wall1: {fileID: 112548753}
-  room2: {fileID: 392252061}
   wall2: {fileID: 1860636251}
+  roomManager: {fileID: 0}
 --- !u!65 &971091321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1942,6 +1942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  immunityTime: .300000012
 --- !u!1 &1484823265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,10 +2011,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c44d2a58c531408afa651587d29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room1: {fileID: 392252061}
+  hallNum: 0
   wall1: {fileID: 1372266743}
-  room2: {fileID: 400606196}
   wall2: {fileID: 518282150}
+  roomManager: {fileID: 0}
 --- !u!65 &1497472624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2286,6 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  immunityTime: .300000012
 --- !u!1 &1674924032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,6 +2753,7 @@ GameObject:
   - 114: {fileID: 2028781338}
   - 54: {fileID: 2028781337}
   - 135: {fileID: 2028781336}
+  - 114: {fileID: 2028781339}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -2784,15 +2787,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929465428ca1a408cbcb40588d92acc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 2130911289}
   speed: 150
   turnSpeed: 1
   target: {fileID: 0}
   hpPerVitality: 0
   primaryWeapon: {fileID: 1547945728}
   secondaryWeapon: {fileID: 0}
-  Armour: {fileID: 0}
+  armour: {fileID: 0}
   ring: {fileID: 0}
+  healthScript: {fileID: 2028781339}
 --- !u!135 &2028781336
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2843,6 +2846,18 @@ MonoBehaviour:
   iconInteract: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
   interactRegPoint: {x: 0, y: 0}
   playerScript: {fileID: 2028781335}
+--- !u!114 &2028781339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2028781333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f109584a03b0f34093bedf7387ef8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
 --- !u!1001 &2028859883
 Prefab:
   m_ObjectHideFlags: 0
@@ -2890,6 +2905,10 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2130911289}
+    - target: {fileID: 11400002, guid: db9d8a28ad378444484b8645d7342edb, type: 2}
+      propertyPath: healthScript
+      value: 
+      objectReference: {fileID: 2028781339}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db9d8a28ad378444484b8645d7342edb, type: 2}
   m_RootGameObject: {fileID: 2028781333}

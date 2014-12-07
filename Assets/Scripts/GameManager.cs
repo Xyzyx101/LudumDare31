@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 		stateGameIntro = new StateGameIntro(this);
 		stateGameMenu = new StateGameMenu(this);
 
-		//stuff for game(shoudl this be in game playing?
+		//stuff for game(shoudl this be in game playing?    // Eventually
 		roomLevel = roomLevelStart;
 	}	
 	

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
-	public Camera mainCamera;
-
+public class Player : MonoBehaviour 
+{
 	public float speed = 150.0F;
 	public float turnSpeed = 0.1f;
 	public Transform target;
@@ -29,7 +28,7 @@ public class Player : MonoBehaviour {
 
 	private float desiredAngle;
 
-	private Vector3 mousePos = Vector3.zero;
+    public HealthMeter healthScript;
 
 	private void CalculatePlayerStats() 
 	{
@@ -77,7 +76,6 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
-
 
 		if(secondaryWeapon)
 		{
@@ -128,6 +126,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
+
 		if(ring)
 		{
 			int[] tempArray;
@@ -138,20 +137,28 @@ public class Player : MonoBehaviour {
 				calPlayerStats[i] += tempArray[i];
 			}			
 		}
-			
+
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
 		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
 		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
 	}
 
+    void Awake()
+    {
+        CalculatePlayerStats();
+        healthScript.SetMaxHitPoints(maxHP);
+    }
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        
 	}
 	
 	// Update is called once per frame
-	void Update() {
-
+	void Update() 
+    {
 		bool primaryAttack = Input.GetMouseButton(0);
 
 		if (primaryWeapon != null && primaryAttack) 
@@ -206,6 +213,10 @@ public class Player : MonoBehaviour {
 			Debug.Log ("you picked that shit up");
 		}
 	}
-}
 
-;
+    public void DoDamage(float damage)
+    {
+        currHP -= (int)damage;
+        healthScript.AlterHealth(-(int)damage);
+    }
+}

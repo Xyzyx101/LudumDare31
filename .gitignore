@@ -6,9 +6,15 @@
 *.csproj
 *.unityproj
 *.sln
+*.sln.*
+*.suo
 
 # Ignore mac shit
 .DS_Store
+
+# Ignore Windows shit
+Thumbs.db
+Thumbs.db.meta
 
 # Ignore emacs backup files
 *~
@@ -17,3 +23,5 @@
 # version of art assets will go into the repository
 Assets/Art-WIP/*
 
+# Project specific userprefs
+LudumDare31.userprefs

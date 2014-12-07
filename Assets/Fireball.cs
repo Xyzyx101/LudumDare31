@@ -15,7 +15,6 @@ public class Fireball : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		Debug.Log(other.gameObject);
 		if (!exploding) {
 			Explode ();
 			exploding = true;

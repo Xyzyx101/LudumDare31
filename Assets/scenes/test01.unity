@@ -1890,7 +1890,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 505261094}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: .00700000022, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1915,7 +1915,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300006, guid: a1e6f5401a431fd4382db762681806fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &515878911
@@ -2025,7 +2025,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 524904314}
   - 212: {fileID: 524904315}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sherk-Idle-upperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2112,7 +2112,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: db9d8a28ad378444484b8645d7342edb, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605095663}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2167,7 +2167,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 720083335}
   - 212: {fileID: 720083336}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sherk-Idle-lowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2735,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 949125719}
   - 212: {fileID: 949125720}
-  m_Layer: 8
+  - 136: {fileID: 949125722}
+  - 114: {fileID: 949125721}
+  m_Layer: 13
   m_Name: Sword_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,6 +2779,32 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 71bd57661c22848a7b863a129b62dba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &949125721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949125718}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66798401d4a164d88879cde5429e8930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTime: .899999976
+  damage: 10
+--- !u!136 &949125722
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949125718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .0500000007
+  m_Height: .640000165
+  m_Direction: 0
+  m_Center: {x: .200465187, y: .00677225133, z: 2.10208762e-09}
 --- !u!1 &971091318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,10 +3480,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1547945729}
-  - 135: {fileID: 1547945731}
   - 114: {fileID: 1547945730}
   - 95: {fileID: 1547945732}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: sword
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3489,19 +3516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: .899999976
   damage: 10
---- !u!135 &1547945731
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: db9d8a28ad378444484b8645d7342edb,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1547945728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .400000006
-  m_Center: {x: 0, y: 0, z: .200000003}
 --- !u!95 &1547945732
 Animator:
   serializedVersion: 3
@@ -3513,7 +3527,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: aa02d110235064059bea050bff063cec, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -4123,6 +4137,7 @@ GameObject:
   - 114: {fileID: 2028781338}
   - 54: {fileID: 2028781337}
   - 135: {fileID: 2028781336}
+  - 114: {fileID: 2028781339}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -4163,9 +4178,7 @@ MonoBehaviour:
   hpPerVitality: 0
   primaryWeapon: {fileID: 1547945728}
   secondaryWeapon: {fileID: 0}
-  Armour: {fileID: 0}
-  ring: {fileID: 0}
-  healthScript: {fileID: 0}
+  healthScript: {fileID: 2028781339}
 --- !u!135 &2028781336
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4191,7 +4204,7 @@ Rigidbody:
   m_Drag: 1
   m_AngularDrag: .0500000007
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -4216,6 +4229,18 @@ MonoBehaviour:
   iconInteract: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
   interactRegPoint: {x: 0, y: 0}
   playerScript: {fileID: 2028781335}
+--- !u!114 &2028781339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2028781333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f109584a03b0f34093bedf7387ef8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: ed3178c14486fa64686014bbc2e98c79, type: 3}
 --- !u!1 &2058756509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4397,7 +4422,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

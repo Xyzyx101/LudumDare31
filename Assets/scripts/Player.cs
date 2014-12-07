@@ -6,15 +6,120 @@ public class Player : MonoBehaviour {
 	public float turnSpeed = 0.1f;
 	public Transform target;
 
+	public int hpPerVitality;
+
 	public GameObject primaryWeapon;
 	public GameObject secondaryWeapon;
+	public GameObject Armour;
+	public GameObject ring;
 
 	private float vSpeed;
 	private float hSpeed;
 
-	private int[] playerStats = new int[5];
+	private int maxHP;
+	private int currHP;
+
+	private int primaryDmg;
+	private int secondaryDmg;
+
+	private int[] basePlayerStats = new int[]{10, 10, 10, 10, 10};
+	private int[] calPlayerStats= new int[5];
 
 	private float desiredAngle;
+
+	private void CalculatePlayerStats() 
+	{
+		//get all the stuff from the equiped items
+		for(int i = 0; i < 5; i++)
+		{
+			calPlayerStats[i] += basePlayerStats[i];
+		}
+
+		int pDmg = 0;
+		int sDmg = 0;
+
+		if(primaryWeapon)
+		{
+			string itemType = primaryWeapon.tag;
+			int[] tempArray;
+			if(itemType == "Sword")
+			{
+				Sword script = primaryWeapon.GetComponent<Sword>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
+//			else if(itemType == "Bow")
+//			{
+//				Bow script = primaryWeapon.GetComponent<Bow>();
+//				tempArray = script.getItemStats();
+//				pDmg = script.GetDamage();
+//				for(int i = 0; i < 5; i++)
+//				{
+//					calPlayerStats[i] += tempArray[i];
+//				}
+//			}
+//			else if(itemType == "Staff")
+//			{
+//				Staff script = primaryWeapon.GetComponent<Staff>();
+//				tempArray = script.getItemStats();
+//				pDmg = script.GetDamage();
+//				for(int i = 0; i < 5; i++)
+//				{
+//					calPlayerStats[i] += tempArray[i];
+//				}
+//			}
+		}
+
+
+		if(secondaryWeapon)
+		{
+			string itemType = secondaryWeapon.tag;
+			int[] tempArray;
+			if(itemType == "Sword")
+			{
+				Sword script = secondaryWeapon.GetComponent<Sword>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
+//			else if(itemType == "Bow")
+//			{
+//				Bow script = secondaryWeapon.GetComponent<Bow>();
+//				tempArray = script.getItemStats();
+//				pDmg = script.GetDamage();
+//				for(int i = 0; i < 5; i++)
+//				{
+//					calPlayerStats[i] += tempArray[i];
+//				}
+//			}
+//			else if(itemType == "Staff")
+//			{
+//				Staff script = secondaryWeapon.GetComponent<Staff>();
+//				tempArray = script.getItemStats();
+//				pDmg = script.GetDamage();
+//				for(int i = 0; i < 5; i++)
+//				{
+//					calPlayerStats[i] += tempArray[i];
+//				}
+//			}
+		}
+
+		//and then for armour and ring
+
+
+		//calc max hp and wepon damage
+		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
+		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
+		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
+	}
 
 	// Use this for initialization
 	void Start () {

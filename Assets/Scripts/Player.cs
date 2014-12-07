@@ -11,8 +11,16 @@ public class Player : MonoBehaviour
 
 	public GameObject primaryWeapon;
 	public GameObject secondaryWeapon;
-	public GameObject armour;
-	public GameObject ring;
+
+	public class Inventory
+	{
+		public GameObject primaryWeapon;
+		public GameObject secondaryWeapon;
+		public GameObject armour;
+		public GameObject ring;
+	}
+
+	public Inventory inventory = new Inventory();
 
 	private float vSpeed;
 	private float hSpeed;
@@ -42,13 +50,13 @@ public class Player : MonoBehaviour
 		int pDmg = 0;
 		int sDmg = 0;
 
-		if(primaryWeapon)
+		if(inventory.primaryWeapon)
 		{
-			string itemType = primaryWeapon.tag;
+			string itemType = inventory.primaryWeapon.tag;
 			int[] tempArray;
 			if(itemType == "Sword")
 			{
-				Sword script = primaryWeapon.GetComponent<Sword>();
+				Sword script = inventory.primaryWeapon.GetComponent<Sword>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				for(int i = 0; i < 5; i++)
@@ -58,7 +66,7 @@ public class Player : MonoBehaviour
 			}
 			else if(itemType == "Bow")
 			{
-				Bow script = primaryWeapon.GetComponent<Bow>();
+				Bow script = inventory.primaryWeapon.GetComponent<Bow>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				for(int i = 0; i < 5; i++)
@@ -68,7 +76,7 @@ public class Player : MonoBehaviour
 			}
 			else if(itemType == "Staff")
 			{
-				Staff script = primaryWeapon.GetComponent<Staff>();
+				Staff script = inventory.primaryWeapon.GetComponent<Staff>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				for(int i = 0; i < 5; i++)
@@ -78,13 +86,13 @@ public class Player : MonoBehaviour
 			}
 		}
 
-		if(secondaryWeapon)
+		if(inventory.secondaryWeapon)
 		{
-			string itemType = secondaryWeapon.tag;
+			string itemType = inventory.secondaryWeapon.tag;
 			int[] tempArray;
 			if(itemType == "Sword")
 			{
-				Sword script = secondaryWeapon.GetComponent<Sword>();
+				Sword script = inventory.secondaryWeapon.GetComponent<Sword>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				
@@ -95,7 +103,7 @@ public class Player : MonoBehaviour
 			}
 			else if(itemType == "Bow")
 			{
-				Bow script = secondaryWeapon.GetComponent<Bow>();
+				Bow script = inventory.secondaryWeapon.GetComponent<Bow>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				for(int i = 0; i < 5; i++)
@@ -105,7 +113,7 @@ public class Player : MonoBehaviour
 			}
 			else if(itemType == "Staff")
 			{
-				Staff script = secondaryWeapon.GetComponent<Staff>();
+				Staff script = inventory.secondaryWeapon.GetComponent<Staff>();
 				tempArray = script.getItemStats();
 				pDmg = script.GetDamage();
 				for(int i = 0; i < 5; i++)
@@ -116,10 +124,10 @@ public class Player : MonoBehaviour
 		}
 
 		//and then for armour and ring
-		if(armour)
+		if(inventory.armour)
 		{
 			int[] tempArray;
-			Armour script = primaryWeapon.GetComponent<Armour>();
+			Armour script = inventory.armour.GetComponent<Armour>();
 			tempArray = script.getItemStats();
 			for(int i = 0; i < 5; i++)
 			{
@@ -128,10 +136,10 @@ public class Player : MonoBehaviour
 		}
 
 
-		if(ring)
+		if(inventory.ring)
 		{
 			int[] tempArray;
-			Ring script = primaryWeapon.GetComponent<Ring>();
+			Ring script = inventory.ring.GetComponent<Ring>();
 			tempArray = script.getItemStats();
 			for(int i = 0; i < 5; i++)
 			{
@@ -198,27 +206,89 @@ public class Player : MonoBehaviour
 		desiredAngle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
 	}
 
-	public void PickupPrimaryItem(Vector3  pos)
+	public void PickupPrimaryItem(Vector3  pos, GameObject item)
 	{
 		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
 		Vector2 posThat = new Vector2 (pos.x, pos.z);
 
 		if((posThat - posThis).magnitude < 0.5f) 
 		{
-			//you have picked Up the item
-			Debug.Log ("you picked that shit up");
+			switch(item.tag)
+			{
+			case "Armour":
+				if(inventory.armour)
+				{
+					inventory.armour.transform.parent = null;
+					inventory.armour.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.armour.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.armour = item;
+				break;
+			case "Ring":
+				if(inventory.ring)
+				{
+					inventory.ring.transform.parent = null;
+					inventory.ring.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.ring.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.ring = item;
+				break;
+			default:
+				if(inventory.primaryWeapon)
+				{
+					inventory.primaryWeapon.transform.parent = null;
+					inventory.primaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.primaryWeapon.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.primaryWeapon = item;
+				break;
+			}
+			item.transform.parent = transform;
+			item.GetComponent<SpriteRenderer>().enabled = false;
+			item.GetComponent<SphereCollider>().enabled = false;
 		}
 	}
 
-	public void PickupSecondaryItem(Vector3  pos)
+	public void PickupSecondaryItem(Vector3  pos, GameObject item)
 	{
 		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
 		Vector2 posThat = new Vector2 (pos.x, pos.z);
 		
 		if((posThat - posThis).magnitude < 0.5f) 
 		{
-			//you have picked Up the item
-			Debug.Log ("you picked that shit up");
+			switch(item.tag)
+			{
+			case "Armour":
+				if(inventory.armour)
+				{
+					inventory.armour.transform.parent = null;
+					inventory.armour.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.armour.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.armour = item;
+				break;
+			case "Ring":
+				if(inventory.ring)
+				{
+					inventory.ring.transform.parent = null;
+					inventory.ring.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.ring.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.ring = item;
+				break;
+			default:
+				if(inventory.primaryWeapon)
+				{
+					inventory.secondaryWeapon.transform.parent = null;
+					inventory.secondaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
+					inventory.secondaryWeapon.GetComponent<SphereCollider>().enabled = true;
+				}
+				inventory.primaryWeapon = item;
+				break;
+			}
+			item.transform.parent = transform;
+			item.GetComponent<SpriteRenderer>().enabled = false;
+			item.GetComponent<SphereCollider>().enabled = false;
 		}
 	}
 

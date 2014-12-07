@@ -32,9 +32,12 @@ public class RaycastMouse : MonoBehaviour
 	
 	void OnGUI()
 	{
+		Vector3 worldPos = Vector3.zero;
 		//determine what we hit.
     	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
+
+
 		if (Physics.Raycast(ray, out hit)) 
 		{
 			switch(hit.collider.tag)
@@ -56,6 +59,18 @@ public class RaycastMouse : MonoBehaviour
 					mouseReg = arrowRegPoint;
 				break;
 			}
+			if(hit.collider.gameObject.layer == 19)
+			{
+				worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
+				if(Input.GetMouseButton(0))
+				{
+					playerScript.PickupPrimaryItem(worldPos);
+				}
+				else if (Input.GetMouseButton(1))
+				{
+					playerScript.PickupSecondaryItem(worldPos);
+				}
+			}
 		}
 		else
 		{
@@ -67,7 +82,7 @@ public class RaycastMouse : MonoBehaviour
 		GUI.DrawTexture( new Rect(mouseCoord.x-mouseReg.x, Screen.height-mouseCoord.y - mouseReg.y, mouseTex.width, mouseTex.height), mouseTex, ScaleMode.StretchToFill, true, 10.0f);
 	
 		mouseCoord = Input.mousePosition;
-		Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
+		worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
 		playerScript.UpdateDirection(worldPos);
 	}
 } 

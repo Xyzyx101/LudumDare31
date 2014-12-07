@@ -10,7 +10,7 @@ public class Staff : MonoBehaviour {
 	private int itemLevel;
 	private int damage;
 	
-	private bool enchanted;
+	public bool enchanted;
 	
 	private int[] itemStats = new int[5];
 	

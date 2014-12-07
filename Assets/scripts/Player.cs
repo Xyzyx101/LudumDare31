@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+	public Camera mainCamera;
+
 	public float speed = 150.0F;
 	public float turnSpeed = 0.1f;
 	public Transform target;
@@ -10,7 +12,7 @@ public class Player : MonoBehaviour {
 
 	public GameObject primaryWeapon;
 	public GameObject secondaryWeapon;
-	public GameObject Armour;
+	public GameObject armour;
 	public GameObject ring;
 
 	private float vSpeed;
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour {
 	private int[] calPlayerStats= new int[5];
 
 	private float desiredAngle;
+
+	private Vector3 mousePos = Vector3.zero;
 
 	private void CalculatePlayerStats() 
 	{
@@ -113,8 +117,28 @@ public class Player : MonoBehaviour {
 		}
 
 		//and then for armour and ring
+		if(armour)
+		{
+			int[] tempArray;
+			Armour script = primaryWeapon.GetComponent<Armour>();
+			tempArray = script.getItemStats();
+			for(int i = 0; i < 5; i++)
+			{
+				calPlayerStats[i] += tempArray[i];
+			}
+		}
 
-
+		if(ring)
+		{
+			int[] tempArray;
+			Ring script = primaryWeapon.GetComponent<Ring>();
+			tempArray = script.getItemStats();
+			for(int i = 0; i < 5; i++)
+			{
+				calPlayerStats[i] += tempArray[i];
+			}			
+		}
+			
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
 		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
@@ -127,6 +151,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
+
 		bool primaryAttack = Input.GetMouseButton(0);
 
 		if (primaryWeapon != null && primaryAttack) 
@@ -138,12 +163,9 @@ public class Player : MonoBehaviour {
 		if ( !primaryAttack && !secondaryAttack) 
         {
 			float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-			Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
+			//Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
 			transform.localEulerAngles = new Vector3(0, angle, 0);
 		}
-
-
-
 
 		//Quaternion desiredQuat = Quaternion.Euler(new Vector3(0, desiredAngle, 0));
 		//transform.localRotation = Quaternion.Lerp(tranform.localRotation, desiredRotation, turnSpeed * Time.deltaTime);
@@ -159,6 +181,30 @@ public class Player : MonoBehaviour {
     {
 		Vector3 targetDir = target - transform.position;
 		desiredAngle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
+	}
+
+	public void PickupPrimaryItem(Vector3  pos)
+	{
+		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
+		Vector2 posThat = new Vector2 (pos.x, pos.z);
+
+		if((posThat - posThis).magnitude < 0.5f) 
+		{
+			//you have picked Up the item
+			Debug.Log ("you picked that shit up");
+		}
+	}
+
+	public void PickupSecondaryItem(Vector3  pos)
+	{
+		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
+		Vector2 posThat = new Vector2 (pos.x, pos.z);
+		
+		if((posThat - posThis).magnitude < 0.5f) 
+		{
+			//you have picked Up the item
+			Debug.Log ("you picked that shit up");
+		}
 	}
 }
 

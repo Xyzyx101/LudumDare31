@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
 			}
 		}
 
-
 		if(secondaryWeapon)
 		{
 			string itemType = secondaryWeapon.tag;
@@ -117,17 +116,22 @@ public class Player : MonoBehaviour
 
 		//and then for armour and ring
 
-
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
 		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
 		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
 	}
 
+    void Awake()
+    {
+        CalculatePlayerStats();
+        healthScript.SetMaxHitPoints(maxHP);
+    }
+
 	// Use this for initialization
 	void Start () 
     {
-        //healthScript.SetMaxHitPoints();
+        
 	}
 	
 	// Update is called once per frame
@@ -167,6 +171,6 @@ public class Player : MonoBehaviour
     public void DoDamage(float damage)
     {
         currHP -= (int)damage;
-        healthScript.AlterHealth((int)damage);
+        healthScript.AlterHealth(-(int)damage);
     }
 }

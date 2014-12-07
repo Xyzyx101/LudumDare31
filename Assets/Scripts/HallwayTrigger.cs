@@ -3,15 +3,13 @@ using System.Collections;
 
 public class HallwayTrigger : MonoBehaviour {
 
-	public GameObject room1;
+	public int hallNum;
 	public GameObject wall1;
-
-	public GameObject room2;
 	public GameObject wall2;
+	public GameObject roomManager;
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -20,24 +18,10 @@ public class HallwayTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-
 	}
 
 	void OnTriggerExit(Collider other) 
 	{
-		if(room1.activeSelf)
-		{
-			wall2.SetActive(false);
-			room1.SetActive(false);
-			room2.SetActive(true);
-			wall1.SetActive(true);
-		}
-		else
-		{
-			wall1.SetActive(false);
-			room2.SetActive(false);
-			room1.SetActive(true);
-			wall2.SetActive(true);
-		}
+		roomManager.GetComponent<RoomManager>().RoomTransition(hallNum);
 	}
 }

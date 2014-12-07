@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get { return instance; } }
 	private static GameManager instance = null;
 	
-	private GameState currentState;
+	public GameState currentState;
 	public StateGamePlaying stateGamePlaying{get;set;}
 	public StateGameLost stateGameLost{get;set;}
 	public StateGameIntro stateGameIntro{get;set;}
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 	
 	private void Start () 
 	{
-		NewGameState( stateGameIntro );
+		NewGameState( stateGameMenu );
 	}
 	
 	private void Update () 
@@ -72,4 +72,14 @@ public class GameManager : MonoBehaviour
 		currentState = newState;
 		currentState.OnStateEntered();
 	}
+
+    public int GetRoomLevel()
+    {
+        return roomLevel;
+    }
+	
+    public void SetPLaying()
+    {
+        NewGameState(stateGamePlaying);
+    }
 }

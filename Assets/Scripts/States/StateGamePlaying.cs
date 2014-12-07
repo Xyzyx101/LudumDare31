@@ -8,7 +8,7 @@ public class StateGamePlaying : GameState
 	
 	public override void OnStateEntered()
 	{
-		Application.LoadLevel(1);
+		
 	}
 	public override void OnStateExit(){}
 	

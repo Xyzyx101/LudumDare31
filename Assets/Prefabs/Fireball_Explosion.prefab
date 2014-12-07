@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.68108559, y: .130375862, z: 3.78634501}
+  m_LocalPosition: {x: -5.09253407, y: -.499999523, z: 3.71630955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -106,8 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689e1c9eed5454265bb12a594149a7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2500
-  delay: 100
+  damage: 100
+  delay: 5
+  light: {fileID: 100002}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -126,7 +127,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  lengthInSec: 1
+  lengthInSec: 2
   startDelay: 0
   speed: 1
   randomSeed: 0

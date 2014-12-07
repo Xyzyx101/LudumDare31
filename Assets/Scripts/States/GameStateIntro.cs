@@ -4,12 +4,12 @@ using System.Collections;
 public class StateGameIntro : GameState 
 {
 	private float timer;
-	
+    
 	public StateGameIntro(GameManager manager):base(manager){ }
 	
 	public override void OnStateEntered()
 	{
-		timer = 1.5f; 
+		timer = 1.0f; 
 		Application.LoadLevel(0);
 	}
 	public override void OnStateExit(){}

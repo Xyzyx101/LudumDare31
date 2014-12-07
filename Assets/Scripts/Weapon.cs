@@ -8,12 +8,12 @@ public class Weapon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Init Disabled");
+		//Debug.Log ("Init Disabled");
 		gameObject.SetActive(false);
 	}
 
 	void OnEnable () {
-		Debug.Log ("Enabled");
+		//Debug.Log ("Enabled");
 		killTime = activeTime;
 	}
 
@@ -21,12 +21,13 @@ public class Weapon : MonoBehaviour {
 	void Update () {
 		killTime -= Time.deltaTime;
 		if (killTime < 0) {
-			Debug.Log ("Disabled");
+			//Debug.Log ("Disabled");
 			gameObject.SetActive(false);
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other) 
+    {
 		other.gameObject.SendMessageUpwards("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
 	}
 }

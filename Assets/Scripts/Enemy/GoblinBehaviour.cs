@@ -33,11 +33,16 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void FixedUpdate()
     {
-        if (target != null && Vector3.Distance(transform.position, target.transform.position) < 2.5)
+        if (target != null && Vector3.Distance(transform.position, target.transform.position) <= 2.5)
         {
             primaryAttack = true;
             transform.LookAt(target.transform.position, Vector3.up);
         }
+        else
+        {
+            primaryAttack = false;
+        }
+
         if (primaryWeapon != null && primaryAttack)
         {
             primaryWeapon.SetActive(true);
@@ -53,51 +58,57 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void WhatDo()
     {
-        if (AgroSensor.isColliding)
+        if(!primaryAttack)
         {
-            GameObject temp = AgroSensor.GiveTarget();
-            if (temp.tag == "Player" && isAlone)
+            if (AgroSensor.isColliding)
             {
-                Flee(temp.transform.position);
+                GameObject temp = AgroSensor.GiveTarget();
+                if (temp.tag == "Player" && isAlone)
+                {
+                    Flee(temp.transform.position);
+                    ShouldWander = false;
+                }
+                else if (temp.tag == "Player" && !isAlone)
+                {
+                    Seek(temp.transform.position, 2.5f);
+                    target = temp;
+                }
+                else if (temp.tag == "Goblin" && partner == null)
+                {
+                    isAlone = false;
+                    partner = temp;
+                }
+            }
+
+            if(partner != null && Vector3.Distance(transform.position, partner.transform.position) > 5)
+            {
+                ShouldWander = false;
+                Seek(partner.transform.position, seperation);
+            }
+
+            if (ShouldWander) // wanter when not turning
+            {
+                Wander();
                 ShouldWander = false;
             }
-            else if (temp.tag == "Player" && !isAlone)
+            else
             {
-                Seek(temp.transform.position, 2.5f);
-                target = temp;
-            }
-            else if (temp.tag == "Goblin" && partner == null)
-            {
-                isAlone = false;
-                partner = temp;
-            }
-        }
-
-        if(partner != null && Vector3.Distance(transform.position, partner.transform.position) > 5)
-        {
-            ShouldWander = false;
-            Seek(partner.transform.position, seperation);
-        }
-
-        if (ShouldWander) // wanter when not turning
-        {
-            Wander();
-            ShouldWander = false;
-        }
-        else
-        {
-            wanderTimeActual -= Time.deltaTime;
-            if (wanderTimeActual <= 0.0f) // resets time of next wander
-            {
-                wanderTimeActual = wanderTime;
-                ShouldWander = true;
+                wanderTimeActual -= Time.deltaTime;
+                if (wanderTimeActual <= 0.0f) // resets time of next wander
+                {
+                    wanderTimeActual = wanderTime;
+                    ShouldWander = true;
+                }
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-
+        if(other.gameObject.layer.ToString() == "Wall")
+        {
+            transform.LookAt(other.gameObject.transform.parent.transform, Vector3.up);
+        }
     }
 
     private void UpdateDirection()

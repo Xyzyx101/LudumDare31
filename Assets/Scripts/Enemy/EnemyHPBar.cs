@@ -25,6 +25,10 @@ public class EnemyHPBar : MonoBehaviour
 	
 	void Update () 
     {
+        if(maxHitPoints == 0)
+        {
+            maxHitPoints = entity.GetComponent<EnemyStats>().hp;
+        }
         hitPoints = entity.GetComponent<EnemyStats>().hp;
 
         if (hitPoints < 0)

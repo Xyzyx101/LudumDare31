@@ -11,6 +11,11 @@ public class EnemyStats : MonoBehaviour
 
     void Awake()
     {
+
+    }
+
+    void Start()
+    {
         gameDiff = GameManager.Instance.GetRoomLevel();
         hp = baseHP * gameDiff;
         damage = strength * gameDiff;

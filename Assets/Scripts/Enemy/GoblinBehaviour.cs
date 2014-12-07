@@ -103,7 +103,7 @@ public class GoblinBehaviour : SteeringBehaviour
         }
     }
 
-    void OnTriggerEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer.ToString() == "Wall")
         {

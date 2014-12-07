@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
 	private int maxHP;
 	private int currHP;
+    private bool isAlive = true;
 
 	private int primaryDmg;
 	private int secondaryDmg;
@@ -137,29 +138,36 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
     {
-		bool primaryAttack = Input.GetMouseButton(0);
-
-		if (primaryWeapon != null && primaryAttack) 
+        if (isAlive)
         {
-			primaryWeapon.SetActive(true);
-		}
-		bool secondaryAttack = Input.GetMouseButton(1);
+            bool primaryAttack = Input.GetMouseButton(0);
 
-		if ( !primaryAttack && !secondaryAttack) 
+            if (primaryWeapon != null && primaryAttack)
+            {
+                primaryWeapon.SetActive(true);
+            }
+            bool secondaryAttack = Input.GetMouseButton(1);
+
+            if (!primaryAttack && !secondaryAttack)
+            {
+                float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
+                //Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
+                transform.localEulerAngles = new Vector3(0, angle, 0);
+            }
+
+            //Quaternion desiredQuat = Quaternion.Euler(new Vector3(0, desiredAngle, 0));
+            //transform.localRotation = Quaternion.Lerp(tranform.localRotation, desiredRotation, turnSpeed * Time.deltaTime);
+
+            vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            vSpeed *= Time.deltaTime;
+            hSpeed *= Time.deltaTime;
+            transform.Translate(hSpeed, 0, vSpeed, null);
+        }
+        else
         {
-			float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-			//Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
-			transform.localEulerAngles = new Vector3(0, angle, 0);
-		}
-
-		//Quaternion desiredQuat = Quaternion.Euler(new Vector3(0, desiredAngle, 0));
-		//transform.localRotation = Quaternion.Lerp(tranform.localRotation, desiredRotation, turnSpeed * Time.deltaTime);
-
-		vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-		hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		vSpeed *= Time.deltaTime;
-		hSpeed *= Time.deltaTime;
-		transform.Translate(hSpeed, 0, vSpeed, null);
+            Debug.Log("FixMe Im Dead");
+        }
 	}
 	
 	public void UpdateDirection(Vector3 target) 
@@ -172,5 +180,9 @@ public class Player : MonoBehaviour
     {
         currHP -= (int)damage;
         healthScript.AlterHealth(-(int)damage);
+        if(currHP <= 0)
+        {
+            isAlive = false;
+        }
     }
 }

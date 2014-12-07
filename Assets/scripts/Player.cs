@@ -52,26 +52,26 @@ public class Player : MonoBehaviour {
 					calPlayerStats[i] += tempArray[i];
 				}
 			}
-//			else if(itemType == "Bow")
-//			{
-//				Bow script = primaryWeapon.GetComponent<Bow>();
-//				tempArray = script.getItemStats();
-//				pDmg = script.GetDamage();
-//				for(int i = 0; i < 5; i++)
-//				{
-//					calPlayerStats[i] += tempArray[i];
-//				}
-//			}
-//			else if(itemType == "Staff")
-//			{
-//				Staff script = primaryWeapon.GetComponent<Staff>();
-//				tempArray = script.getItemStats();
-//				pDmg = script.GetDamage();
-//				for(int i = 0; i < 5; i++)
-//				{
-//					calPlayerStats[i] += tempArray[i];
-//				}
-//			}
+			else if(itemType == "Bow")
+			{
+				Bow script = primaryWeapon.GetComponent<Bow>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
+			else if(itemType == "Staff")
+			{
+				Staff script = primaryWeapon.GetComponent<Staff>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
 		}
 
 
@@ -90,26 +90,26 @@ public class Player : MonoBehaviour {
 					calPlayerStats[i] += tempArray[i];
 				}
 			}
-//			else if(itemType == "Bow")
-//			{
-//				Bow script = secondaryWeapon.GetComponent<Bow>();
-//				tempArray = script.getItemStats();
-//				pDmg = script.GetDamage();
-//				for(int i = 0; i < 5; i++)
-//				{
-//					calPlayerStats[i] += tempArray[i];
-//				}
-//			}
-//			else if(itemType == "Staff")
-//			{
-//				Staff script = secondaryWeapon.GetComponent<Staff>();
-//				tempArray = script.getItemStats();
-//				pDmg = script.GetDamage();
-//				for(int i = 0; i < 5; i++)
-//				{
-//					calPlayerStats[i] += tempArray[i];
-//				}
-//			}
+			else if(itemType == "Bow")
+			{
+				Bow script = secondaryWeapon.GetComponent<Bow>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
+			else if(itemType == "Staff")
+			{
+				Staff script = secondaryWeapon.GetComponent<Staff>();
+				tempArray = script.getItemStats();
+				pDmg = script.GetDamage();
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}
 		}
 
 		//and then for armour and ring

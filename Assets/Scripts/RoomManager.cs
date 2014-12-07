@@ -25,13 +25,13 @@ public class RoomManager : MonoBehaviour {
 	{
 		if (instance != null && instance != this)
 		{
-			Destroy(this.gameObject);
-			return;        
+			//Destroy(this.gameObject);
+			Debug.Log ("You fucked up bro");
 		} 
-		else 
-		{
+//		else 
+//		{
 			instance = this;
-		}
+//		}
 		DontDestroyOnLoad(this.gameObject);
 		
 		//stuff for game(shoudl this be in game playing?    // Eventually

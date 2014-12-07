@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour {
 	public float activeTime;
-	public float damage;
 	private float killTime;
 
 	// Use this for initialization
@@ -21,10 +20,5 @@ public class Weapon : MonoBehaviour {
 		if (killTime < 0) {
 			gameObject.SetActive(false);
 		}
-	}
-
-	void OnTriggerEnter(Collider other) 
-    {
-		other.gameObject.SendMessageUpwards("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
 	}
 }

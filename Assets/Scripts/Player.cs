@@ -182,6 +182,10 @@ public class Player : MonoBehaviour
                 primaryWeapon.SetActive(true);
             }
             bool secondaryAttack = Input.GetMouseButton(1);
+			if (secondaryWeapon != null && secondaryAttack)
+			{
+				secondaryWeapon.SetActive(true);
+			}
 
             if (!primaryAttack && !secondaryAttack)
             {

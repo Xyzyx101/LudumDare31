@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
 		if ( !primaryAttack && !secondaryAttack) 
         {
 			float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-			Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
+			//Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
 			transform.localEulerAngles = new Vector3(0, angle, 0);
 		}
 

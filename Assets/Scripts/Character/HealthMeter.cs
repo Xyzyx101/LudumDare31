@@ -15,11 +15,11 @@ public class HealthMeter : MonoBehaviour
         GUI.depth = 1;
 
         GUI.color = Color.black;
-        GUI.DrawTexture(new Rect(Screen.width * 0.2f - 2, (Screen.height * 0.9f) - (Screen.height * 0.01f), (Screen.width * 0.2f) + 4, (Screen.height * 0.05f) + 4), image);
+        GUI.DrawTexture(new Rect(Screen.width * 0.2f - 2, (Screen.height * 0.125f), (Screen.width * 0.2f) + 4, (Screen.height * 0.05f) + 4), image);
         GUI.color = Color.white;
 
         whatColor();
-        GUI.DrawTexture(new Rect(Screen.width * 0.2f, (Screen.height * 0.9f) - (Screen.height * 0.01f) + 2, (Screen.width * 0.2f) * normalisedHealth, Screen.height * 0.05f), image);
+        GUI.DrawTexture(new Rect(Screen.width * 0.2f, (Screen.height * 0.125f) + 2, (Screen.width * 0.2f) * normalisedHealth, Screen.height * 0.05f), image);
         GUI.color = Color.white;
 	}
 	

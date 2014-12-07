@@ -3,18 +3,19 @@ using System.Collections;
 
 public class FireballExplosion : MonoBehaviour {
 	public float damage = 25f;
-	public float delay = 100f;
+	public float delay = 5f;
+	public GameObject light;
 	private bool damageActive = true;
 
 	void Update () {
-		delay -= Time.time;
+		light.light.intensity = delay;
+		delay -= Time.deltaTime;
 		if (delay < 0) {
 			Destroy(this.gameObject);
 		}
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log(other);
 		if ( damageActive ) {
 			other.gameObject.SendMessageUpwards("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
 		}

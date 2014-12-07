@@ -9,7 +9,11 @@ TagManager:
   - Room3
   - Room4
   - RoomManager
-  - 
+  - Sword
+  - Staff
+  - Bow
+  - Armour
+  - Ring
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

@@ -64,11 +64,11 @@ public class RaycastMouse : MonoBehaviour
 				worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
 				if(Input.GetMouseButton(0))
 				{
-					playerScript.PickupPrimaryItem(worldPos);
+					playerScript.PickupPrimaryItem(worldPos, hit.collider.gameObject);
 				}
 				else if (Input.GetMouseButton(1))
 				{
-					playerScript.PickupSecondaryItem(worldPos);
+					playerScript.PickupSecondaryItem(worldPos, hit.collider.gameObject);
 				}
 			}
 		}

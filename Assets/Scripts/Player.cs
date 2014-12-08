@@ -139,12 +139,16 @@ public class Player : MonoBehaviour
 
                 if (primaryWeapon != null && primaryAttack)
                 {
-                    primaryWeapon.SetActive(true);
+					primaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+					secondaryWeapon.SetActive(false);
+					primaryWeapon.SetActive(true);
                 }
                 bool secondaryAttack = Input.GetMouseButton(1);
 			    if (secondaryWeapon != null && secondaryAttack)
 			    {
-				    secondaryWeapon.SetActive(true);
+					secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+					primaryWeapon.SetActive(false);
+					secondaryWeapon.SetActive(true);
 			    }
 
                 if (!primaryAttack && !secondaryAttack)

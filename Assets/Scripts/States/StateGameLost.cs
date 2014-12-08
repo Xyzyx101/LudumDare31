@@ -9,7 +9,6 @@ public class StateGameLost : GameState
 	public override void OnStateEntered()
 	{
 		timer = 3.0f;
-		Application.LoadLevel(0);
 	}
 	public override void OnStateExit(){}
 	public override void StateUpdate()
@@ -24,5 +23,7 @@ public class StateGameLost : GameState
 	public override void StateGUI() 
 	{
 		GUILayout.Label("state: GAME LOST. \t timer: " + timer);
+
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), gameManager.gameoverIMG);
 	}
 }

@@ -120,14 +120,6 @@ public class GoblinBehaviour : SteeringBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer.ToString() == "Wall")
-        {
-            transform.LookAt(other.gameObject.transform.parent.transform, Vector3.up);
-        }
-    }
-
     private void UpdateDirection()
     {
         Vector3 targetDir = target.transform.position - transform.position;

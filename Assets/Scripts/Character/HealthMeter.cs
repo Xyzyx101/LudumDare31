@@ -40,18 +40,18 @@ public class HealthMeter : MonoBehaviour
 	public void SetMaxHitPoints(int newValue)
 	{
 		maxHitPoints = newValue;
-		hitPoints = maxHitPoints;
 	}
 	
 	//alter the current amount of health in the health bar.
-	public void AlterHealth(int amount)
+	public void SetHealth(int amount)
 	{
-		hitPoints += amount;
-        if(hitPoints + amount > maxHitPoints)
-        {
-            hitPoints = maxHitPoints;
-        }
+        hitPoints = amount;
 	}
+
+    public void SetMaxHealth(int amount)
+    {
+        maxHitPoints = amount;
+    }
 
     void Start()
     {

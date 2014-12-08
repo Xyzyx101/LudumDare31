@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.00308037, y: 1.90734863e-05, z: -.975798488}
+  m_LocalPosition: {x: -3.43000007, y: 0, z: -.980000019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,6 +39,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42a3230adee55e439207885140610a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomLevelIncrement: 5
+  roomLevelStart: 10
+  roomLevelVariation: 8
+  objectsToSpawn: []
+  minObjectsToSpawn: 0
+  maxObjectsToSpawn: 3
   rooms:
   - {fileID: 0}
   - {fileID: 0}
@@ -49,6 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currRoom: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

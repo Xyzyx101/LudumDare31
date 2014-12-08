@@ -22,6 +22,7 @@ public class HallwayTrigger : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) 
 	{
-		roomManager.GetComponent<RoomManager>().RoomTransition(hallNum);
+		if(roomManager)
+			roomManager.GetComponent<RoomManager>().RoomTransition(hallNum);
 	}
 }

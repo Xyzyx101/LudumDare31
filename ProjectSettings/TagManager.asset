@@ -14,6 +14,9 @@ TagManager:
   - Bow
   - Armour
   - Ring
+  - Spear
+  - Axe
+  - Dagger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

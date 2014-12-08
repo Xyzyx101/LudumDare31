@@ -69,35 +69,13 @@ public class Player : MonoBehaviour
 		{
 			string itemType = inventory.primaryWeapon.tag;
 			int[] tempArray;
-			if(itemType == "Sword")
+
+			WeaponItem script = inventory.primaryWeapon.GetComponent<WeaponItem>();
+			tempArray = script.getItemStats();
+			pDmg = script.GetDamage();
+			for(int i = 0; i < 5; i++)
 			{
-				Sword script = inventory.primaryWeapon.GetComponent<Sword>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
-			}
-			else if(itemType == "Bow")
-			{
-				Bow script = inventory.primaryWeapon.GetComponent<Bow>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
-			}
-			else if(itemType == "Staff")
-			{
-				Staff script = inventory.primaryWeapon.GetComponent<Staff>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
+				calPlayerStats[i] += tempArray[i];
 			}
 		}
 
@@ -105,36 +83,13 @@ public class Player : MonoBehaviour
 		{
 			string itemType = inventory.secondaryWeapon.tag;
 			int[] tempArray;
-			if(itemType == "Sword")
+
+			WeaponItem script = inventory.secondaryWeapon.GetComponent<WeaponItem>();
+			tempArray = script.getItemStats();
+			pDmg = script.GetDamage();
+			for(int i = 0; i < 5; i++)
 			{
-				Sword script = inventory.secondaryWeapon.GetComponent<Sword>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
-			}
-			else if(itemType == "Bow")
-			{
-				Bow script = inventory.secondaryWeapon.GetComponent<Bow>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
-			}
-			else if(itemType == "Staff")
-			{
-				Staff script = inventory.secondaryWeapon.GetComponent<Staff>();
-				tempArray = script.getItemStats();
-				pDmg = script.GetDamage();
-				for(int i = 0; i < 5; i++)
-				{
-					calPlayerStats[i] += tempArray[i];
-				}
+				calPlayerStats[i] += tempArray[i];
 			}
 		}
 
@@ -182,6 +137,10 @@ public class Player : MonoBehaviour
                 primaryWeapon.SetActive(true);
             }
             bool secondaryAttack = Input.GetMouseButton(1);
+			if (secondaryWeapon != null && secondaryAttack)
+			{
+				secondaryWeapon.SetActive(true);
+			}
 
             if (!primaryAttack && !secondaryAttack)
             {
@@ -216,7 +175,7 @@ public class Player : MonoBehaviour
 		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
 		Vector2 posThat = new Vector2 (pos.x, pos.z);
 
-		if((posThat - posThis).magnitude < 0.5f) 
+		if((posThat - posThis).magnitude < 1.5f) 
 		{
 			switch(item.tag)
 			{
@@ -251,6 +210,8 @@ public class Player : MonoBehaviour
 			item.transform.parent = transform;
 			item.GetComponent<SpriteRenderer>().enabled = false;
 			item.GetComponent<SphereCollider>().enabled = false;
+			CalculatePlayerStats();
+			//init weapon?
 		}
 	}
 
@@ -259,7 +220,7 @@ public class Player : MonoBehaviour
 		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
 		Vector2 posThat = new Vector2 (pos.x, pos.z);
 		
-		if((posThat - posThis).magnitude < 0.5f) 
+		if((posThat - posThis).magnitude < 1.5f) 
 		{
 			switch(item.tag)
 			{
@@ -294,6 +255,8 @@ public class Player : MonoBehaviour
 			item.transform.parent = transform;
 			item.GetComponent<SpriteRenderer>().enabled = false;
 			item.GetComponent<SphereCollider>().enabled = false;
+			CalculatePlayerStats();
+			//init weapon?
 		}
 	}
 

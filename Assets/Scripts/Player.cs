@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         {
             if (isAlive)
             {
-                bool primaryAttack = Input.GetMouseButton(0);
+                bool primaryAttack = Input.GetMouseButtonDown(0);
 
                 if (primaryWeapon != null && primaryAttack)
                 {
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
 					secondaryWeapon.SetActive(false);
 					primaryWeapon.SetActive(true);
                 }
-                bool secondaryAttack = Input.GetMouseButton(1);
+                bool secondaryAttack = Input.GetMouseButtonDown(1);
 			    if (secondaryWeapon != null && secondaryAttack)
 			    {
 					secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
@@ -210,6 +210,11 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.primaryWeapon)
 				{
+					if( inventory.primaryWeapon.name == "StaffItem" ) {
+						ProjectileWeapon weaponScript = primaryWeapon.GetComponent<ProjectileWeapon>();
+						WeaponItem itemScript = inventory.primaryWeapon.GetComponent<WeaponItem>();
+						itemScript.charges = weaponScript.charges;
+					}
 					inventory.primaryWeapon.transform.parent = item.transform.parent;
 					inventory.primaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.primaryWeapon.GetComponent<SphereCollider>().enabled = true;
@@ -233,7 +238,7 @@ public class Player : MonoBehaviour
 			}
 			ProjectileWeapon projWeapon = primaryWeapon.GetComponent<ProjectileWeapon>();
 			if ( projWeapon ) {
-				projWeapon.InitWithDamage(pDmg);
+				projWeapon.InitWithDamageAndCharges(pDmg, script.charges);
 			}
 		}
         statGui.UpdateWeapons();
@@ -269,6 +274,11 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.secondaryWeapon)
 				{
+					if( inventory.secondaryWeapon.name == "StaffItem" ) {
+						ProjectileWeapon weaponScript = secondaryWeapon.GetComponent<ProjectileWeapon>();
+						WeaponItem itemScript = inventory.secondaryWeapon.GetComponent<WeaponItem>();
+						itemScript.charges = weaponScript.charges;
+					}
 					inventory.secondaryWeapon.transform.parent = item.transform.parent;
 					inventory.secondaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.secondaryWeapon.GetComponent<SphereCollider>().enabled = true;
@@ -293,7 +303,7 @@ public class Player : MonoBehaviour
 			}
 			ProjectileWeapon projWeapon = secondaryWeapon.GetComponent<ProjectileWeapon>();
 			if ( projWeapon ) {
-				projWeapon.InitWithDamage(pDmg);
+				projWeapon.InitWithDamageAndCharges(pDmg, script.charges);
 			}
 		}
         statGui.UpdateWeapons();

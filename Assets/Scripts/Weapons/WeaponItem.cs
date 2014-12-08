@@ -6,6 +6,7 @@ public class WeaponItem : MonoBehaviour {
 	public int chanceOfStat = 70;
 	public float statMultiplier = 0.25f;
 	public float DamageToLevelMultiplyer = 0.9f;
+	public int charges = 0;
 	
 	private int itemLevel;
 	private int damage;
@@ -40,6 +41,9 @@ public class WeaponItem : MonoBehaviour {
 		else
 		{
 			enchanted = false;
+		}
+		if (this.name == "StaffItem") {
+			charges = Random.Range(2, 6);
 		}
 	}
 	

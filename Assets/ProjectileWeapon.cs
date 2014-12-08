@@ -5,11 +5,13 @@ public class ProjectileWeapon : MonoBehaviour {
 	public float activeTime = 0.5f;
 	public GameObject projectile;
 	public float damage = 5f;
+	public int charges;
 	private float shootTime;
 	private bool canShoot;
 	
-	public void InitWithDamage(float newDamage) {
+	public void InitWithDamageAndCharges(float newDamage, int newCharges) {
 		damage = newDamage;
+		charges = newCharges;
 	}
 
 	// Use this for initialization
@@ -26,13 +28,18 @@ public class ProjectileWeapon : MonoBehaviour {
 	void Update () {
 		shootTime -= Time.deltaTime;
 		if (canShoot) {
+			charges--;
 			GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
 			Projectile newProjectile = gameObject.GetComponentInChildren<Projectile>();
 			newProjectile.SetDamage(damage);
 			canShoot = false;
 		}
 		if (shootTime < 0) {
-			canShoot = true;
+			if (this.name == "fireball-weapon" && charges <= 0) {
+				canShoot = false;	
+			} else {
+				canShoot = true;
+			}
 			gameObject.SetActive(false);
 		}
 	}	

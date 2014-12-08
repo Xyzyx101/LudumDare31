@@ -8,6 +8,7 @@ public class FireballExplosion : MonoBehaviour {
 	private bool damageActive = true;
 
 	void Update () {
+		Debug.Log (delay);
 		light.light.intensity = delay;
 		delay -= Time.deltaTime;
 		if (delay < 0) {

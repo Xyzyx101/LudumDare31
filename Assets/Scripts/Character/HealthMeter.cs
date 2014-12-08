@@ -8,7 +8,7 @@ public class HealthMeter : MonoBehaviour
 	private float maxHitPoints = 0;
     private float normalisedHealth;
 
-    public GUISkin Skin;
+    private GUISkin Skin;
 	
 	private void OnGUI()
 	{
@@ -53,8 +53,8 @@ public class HealthMeter : MonoBehaviour
         }
 	}
 
-    void whatColor()
+    void Awake()
     {
-        
+        Skin = GuiManager.GetSkin();
     }
 }

@@ -691,6 +691,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  StrBonus: 0
+  DexBonus: 0
 --- !u!136 &148334726
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -779,7 +781,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 157725613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.999960005}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: .949999988, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 2223497}
@@ -787,7 +789,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -131.199997}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 60.9000015}
   m_Pivot: {x: .5, y: 1}
 --- !u!1 &162046925
 GameObject:
@@ -1013,6 +1015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
+  StrBonus: 0
+  DexBonus: 0
 --- !u!136 &198981861
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1849,6 +1853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 3
   projectile: {fileID: 100002, guid: 8e0e7495125e946d09bd74abd3614bd2, type: 2}
+  damage: 5
 --- !u!95 &835840776
 Animator:
   serializedVersion: 3
@@ -2026,7 +2031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
-  Skin: {fileID: 11400000, guid: 32498cdc4cfa9ee4c8b1b8eafecd4d9e, type: 2}
 --- !u!135 &869032403
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2107,8 +2111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  Skin: {fileID: 0}
+  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
+  playerScript: {fileID: 869032406}
 --- !u!1001 &870828146
 Prefab:
   m_ObjectHideFlags: 0
@@ -2256,6 +2260,7 @@ GameObject:
   - 4: {fileID: 1123574476}
   - 114: {fileID: 1123574475}
   - 114: {fileID: 1123574474}
+  - 114: {fileID: 1123574477}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2314,6 +2319,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1123574477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123574473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dcd32b44f0bf8418e1edc3ce25eeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiSkin: {fileID: 11400000, guid: 32498cdc4cfa9ee4c8b1b8eafecd4d9e, type: 2}
 --- !u!1 &1205083718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,6 +3453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: .300000012
   projectile: {fileID: 100000, guid: fd7c1b81d4a0c71409314d05a5c02a21, type: 2}
+  damage: 5
 --- !u!95 &1823076180
 Animator:
   serializedVersion: 3
@@ -3495,6 +3513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+  StrBonus: 0
+  DexBonus: 0
 --- !u!136 &1861664645
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3679,6 +3699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 1.20000005
   projectile: {fileID: 100002, guid: 0381756bde176cf49a3359eee024a8e4, type: 2}
+  damage: 5
 --- !u!95 &1893954724
 Animator:
   serializedVersion: 3

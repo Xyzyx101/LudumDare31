@@ -52,6 +52,14 @@ public class RaycastMouse : MonoBehaviour
 		{
 			mouseTex = iconArrow;
 			mouseReg = arrowRegPoint;
+			if(Input.GetMouseButtonUp(0))
+			{
+				playerScript.PrimaryAttack();
+			}
+			else if (Input.GetMouseButtonUp(1))
+			{
+				playerScript.SecondaryAttack();
+			}
 		}
 		//update texture object.
         GUI.depth = 0;

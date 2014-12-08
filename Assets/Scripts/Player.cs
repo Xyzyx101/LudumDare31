@@ -139,25 +139,8 @@ public class Player : MonoBehaviour
         {
             if (isAlive)
             {
-                bool primaryAttack = Input.GetMouseButton(0);
-
-                if (primaryWeapon != null && primaryAttack)
-                {
-					primaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-					primaryWeapon.SetActive(true);
-                }
-                bool secondaryAttack = Input.GetMouseButton(1);
-			    if (secondaryWeapon != null && secondaryAttack)
-			    {
-					secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
-					secondaryWeapon.SetActive(true);
-			    }
-
-                if (!primaryAttack && !secondaryAttack)
-                {
-                    float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-                    transform.localEulerAngles = new Vector3(0, angle, 0);
-                }
+                float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
+                transform.localEulerAngles = new Vector3(0, angle, 0);
 
                 vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
                 hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -326,4 +309,22 @@ public class Player : MonoBehaviour
             isAlive = false;
         }
     }
+
+	public void PrimaryAttack()
+	{
+		if (primaryWeapon != null && isAlive && go)
+		{
+			primaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+			primaryWeapon.SetActive(true);
+		}
+	}
+
+	public void SecondaryAttack()
+	{
+		if (secondaryWeapon != null && isAlive && go)
+		{
+			secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+			secondaryWeapon.SetActive(true);
+		}
+	}
 }

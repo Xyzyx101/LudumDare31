@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
+	public float speedMultiplier = 15;
 	public float speed = 150.0F;
 	public float turnSpeed = 0.1f;
 	public Transform target;
@@ -98,9 +99,9 @@ public class Player : MonoBehaviour
 			int[] tempArray;
 			Armour script = inventory.armour.GetComponent<Armour>();
 			tempArray = script.getItemStats();
-			if(script.enchanted)
+			for(int i = 0; i < 5; i++)
 			{
-				for(int i = 0; i < 5; i++)
+				if(script.enchanted || i == (int)stats.Defense)
 				{
 					calPlayerStats[i] += tempArray[i];
 				}
@@ -122,10 +123,12 @@ public class Player : MonoBehaviour
 			}		
 		}
 
-		//calc max hp and wepon damage
-		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
+		//calc max hp
+		maxHP = hpPerVitality * calPlayerStats[(int)stats.Vitality];
 		currHP += maxHP - prevHP;
 		healthScript.SetMaxHitPoints(maxHP);
+		//calc speed
+		speed = speedMultiplier * calPlayerStats[(int)stats.Speed];
 	}
 	
 	// Update is called once per frame
@@ -311,7 +314,10 @@ public class Player : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-        currHP -= (int)damage;
+		//apply defence to damage
+		damage = damage * (100/(100 + calPlayerStats[(int)stats.Defense]));
+
+        currHP -= Mathf.CeilToInt(damage);//so you always take at least 1 damage.
         healthScript.AlterHealth(-(int)damage);
         if(currHP <= 0)
         {

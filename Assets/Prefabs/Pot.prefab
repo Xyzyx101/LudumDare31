@@ -41,8 +41,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08405b6fcd323d4e8eee28350a3263e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawnable: []
-  chanceToSpawn: 5
+  Spawnable:
+  - {fileID: 100000, guid: 7e7803dca7dce1f4281d4294004a5a5e, type: 2}
+  - {fileID: 100000, guid: 39b2bcc0b003c484885a4f3155442ece, type: 2}
+  - {fileID: 100000, guid: addbd7f9c8188ca45ae7896854efd405, type: 2}
+  - {fileID: 100000, guid: a741933648e8c8448b64868dd02f5479, type: 2}
+  - {fileID: 100000, guid: aaa0c6933d9a6b443bcbad2eafdb0370, type: 2}
+  - {fileID: 100000, guid: 9a497f5224a259f45a297584d408e3ba, type: 2}
+  - {fileID: 100000, guid: 00aa779fe830a0a4c84c8d18bf2eed66, type: 2}
+  - {fileID: 100000, guid: d73017782d8398041b4ca5f164a74610, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
+  chanceToSpawn: 35
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

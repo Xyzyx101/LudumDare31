@@ -45,12 +45,6 @@ public class Player : MonoBehaviour
         healthScript.SetMaxHitPoints(maxHP);
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
 	private void CalculatePlayerStats() 
 	{
 		//get the current hp so that we can proporly increase your hp
@@ -59,11 +53,8 @@ public class Player : MonoBehaviour
 		//get all the stuff from the equiped items
 		for(int i = 0; i < 5; i++)
 		{
-			calPlayerStats[i] += basePlayerStats[i];
+			calPlayerStats[i] = basePlayerStats[i];
 		}
-
-		int pDmg = 0;
-		int sDmg = 0;
 
 		if(inventory.primaryWeapon)
 		{
@@ -72,10 +63,12 @@ public class Player : MonoBehaviour
 
 			WeaponItem script = inventory.primaryWeapon.GetComponent<WeaponItem>();
 			tempArray = script.getItemStats();
-			pDmg = script.GetDamage();
-			for(int i = 0; i < 5; i++)
+			if(script.enchanted)
 			{
-				calPlayerStats[i] += tempArray[i];
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
 			}
 		}
 
@@ -86,10 +79,12 @@ public class Player : MonoBehaviour
 
 			WeaponItem script = inventory.secondaryWeapon.GetComponent<WeaponItem>();
 			tempArray = script.getItemStats();
-			pDmg = script.GetDamage();
-			for(int i = 0; i < 5; i++)
+			if(script.enchanted)
 			{
-				calPlayerStats[i] += tempArray[i];
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
 			}
 		}
 
@@ -99,9 +94,12 @@ public class Player : MonoBehaviour
 			int[] tempArray;
 			Armour script = inventory.armour.GetComponent<Armour>();
 			tempArray = script.getItemStats();
-			for(int i = 0; i < 5; i++)
+			if(script.enchanted)
 			{
-				calPlayerStats[i] += tempArray[i];
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
 			}
 		}
 
@@ -111,18 +109,19 @@ public class Player : MonoBehaviour
 			int[] tempArray;
 			Ring script = inventory.ring.GetComponent<Ring>();
 			tempArray = script.getItemStats();
-			for(int i = 0; i < 5; i++)
+			if(script.enchanted)
 			{
-				calPlayerStats[i] += tempArray[i];
-			}			
+				for(int i = 0; i < 5; i++)
+				{
+					calPlayerStats[i] += tempArray[i];
+				}
+			}		
 		}
 
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
 		currHP += maxHP - prevHP;
-
-		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
-		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
+		healthScript.SetMaxHitPoints(maxHP);
 	}
 	
 	// Update is called once per frame
@@ -270,6 +269,20 @@ public class Player : MonoBehaviour
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
 			//init weapon?
+		}
+		Transform newWeapon = transform.Find("WeaponBindPoint/" + inventory.secondaryWeapon.tag);
+		if( newWeapon ) {
+			secondaryWeapon = newWeapon.gameObject;
+			WeaponItem script = inventory.secondaryWeapon.GetComponent<WeaponItem>();
+			float pDmg = script.GetDamage();
+			Weapon weapon = secondaryWeapon.GetComponent<Weapon>();
+			if ( weapon ) {
+				weapon.InitWithDamage(pDmg);
+			}
+			ProjectileWeapon projWeapon = secondaryWeapon.GetComponent<ProjectileWeapon>();
+			if ( projWeapon ) {
+				projWeapon.InitWithDamage(pDmg);
+			}
 		}
 	}
 

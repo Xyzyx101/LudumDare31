@@ -26,7 +26,7 @@ public class WeaponItem : MonoBehaviour {
 		{
 			if (Random.Range(0, 100) > chanceOfStat)
 			{
-				itemStats[i] = Mathf.FloorToInt(Random.Range(0, itemLevel) * statMultiplier - (itemLevel * statMultiplier));
+				itemStats[i] = Mathf.FloorToInt(Random.Range(0, itemLevel) * statMultiplier - (itemLevel * statMultiplier * 0.5f));
 			}
 			else
 			{

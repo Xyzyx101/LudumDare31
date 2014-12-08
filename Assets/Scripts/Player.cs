@@ -26,8 +26,8 @@ public class Player : MonoBehaviour
 	private float vSpeed;
 	private float hSpeed;
 
-	private int maxHP;
-	private int currHP;
+	public int maxHP;
+	public int currHP;
     private bool isAlive = true;
 
 	private int primaryDmg;
@@ -313,11 +313,13 @@ public class Player : MonoBehaviour
     public void DoDamage(float damage)
     {
 		//apply defence to damage
-		damage = damage * (100/(100 + calPlayerStats[(int)stats.Defense]));
+		float reduction = 100.0f / (100.0f + calPlayerStats [(int)stats.Defense]);
+
+		damage *= reduction;
 
         currHP -= Mathf.CeilToInt(damage);//so you always take at least 1 damage.
-        healthScript.AlterHealth(-(int)damage);
-        if(currHP <= 0)
+		healthScript.AlterHealth(-Mathf.CeilToInt(damage));
+		if(currHP <= 0)
         {
             isAlive = false;
         }

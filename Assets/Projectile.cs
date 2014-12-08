@@ -8,9 +8,10 @@ public class Projectile : MonoBehaviour {
 	public GameObject sprite;
 	public float maxTimer = 2.0f;
 
-	void Start () {	
+	public void SetDamage(float newDamage) {
+		damage = newDamage;
 	}
-	
+
 	void Update () {
 		maxTimer -= Time.deltaTime;
 		if (maxTimer < 0) {

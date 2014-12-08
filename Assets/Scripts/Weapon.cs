@@ -4,8 +4,12 @@ using System.Collections;
 public class Weapon : MonoBehaviour {
 	public float activeTime;
 	private float killTime;
+	
+	public void InitWithDamage(float damage) {
+		DamageEnemy damageEnemy = GetComponentInChildren<DamageEnemy>();
+		damageEnemy.SetDamage(damage);
+	}
 
-	// Use this for initialization
 	void Start () {
 		gameObject.SetActive(false);
 	}

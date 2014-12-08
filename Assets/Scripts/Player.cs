@@ -145,12 +145,8 @@ public class Player : MonoBehaviour
             if (!primaryAttack && !secondaryAttack)
             {
                 float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-                //Debug.Log("before:"+transform.localEulerAngles.y + "  desired:" + desiredAngle + "  after:" + angle);
                 transform.localEulerAngles = new Vector3(0, angle, 0);
             }
-
-            //Quaternion desiredQuat = Quaternion.Euler(new Vector3(0, desiredAngle, 0));
-            //transform.localRotation = Quaternion.Lerp(tranform.localRotation, desiredRotation, turnSpeed * Time.deltaTime);
 
             vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -163,7 +159,11 @@ public class Player : MonoBehaviour
             Debug.Log("FixMe Im Dead");
         }
 	}
-	
+
+	public int GetStats(stats stat) {
+		return calPlayerStats[(int)stat];
+	}
+
 	public void UpdateDirection(Vector3 target) 
     {
 		Vector3 targetDir = target - transform.position;
@@ -211,7 +211,6 @@ public class Player : MonoBehaviour
 			item.GetComponent<SpriteRenderer>().enabled = false;
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
-			//init weapon?
 		}
 	}
 
@@ -243,13 +242,13 @@ public class Player : MonoBehaviour
 				inventory.ring = item;
 				break;
 			default:
-				if(inventory.primaryWeapon)
+				if(inventory.secondaryWeapon)
 				{
 					inventory.secondaryWeapon.transform.parent = null;
 					inventory.secondaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.secondaryWeapon.GetComponent<SphereCollider>().enabled = true;
 				}
-				inventory.primaryWeapon = item;
+				inventory.secondaryWeapon = item;
 				break;
 			}
 			item.transform.parent = transform;
@@ -257,6 +256,10 @@ public class Player : MonoBehaviour
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
 			//init weapon?
+
+			//primaryWeapon = transform.Find(inventory.primaryWeapon.tag);
+
+			//InitWithDamage(float damage) 
 		}
 	}
 

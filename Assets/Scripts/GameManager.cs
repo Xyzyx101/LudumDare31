@@ -2,7 +2,7 @@
 using System.Collections;
 
 //globals
-enum stats{
+public enum stats {
 	Vitality,
 	Speed,
 	Dextarity,
@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
 	
 	private void Awake () 
 	{
-
-		
 		stateGamePlaying = new StateGamePlaying(this);
 		stateGameLost = new StateGameLost(this);
 		stateGameIntro = new StateGameIntro(this);

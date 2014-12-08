@@ -13,6 +13,7 @@ public class GoblinBehaviour : SteeringBehaviour
 
     public float seperation = 1;
     private bool isAlone = true;
+    private bool agro = false;
     private bool ShouldWander = true;
     private GameObject partner;
     private GameObject target;
@@ -58,47 +59,44 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void WhatDo()
     {
-        if(!primaryAttack)
+        if (AgroSensor.isColliding)
         {
-            if (AgroSensor.isColliding)
+            GameObject temp = AgroSensor.GiveTarget();
+            if (temp.tag == "Player" && isAlone)
             {
-                GameObject temp = AgroSensor.GiveTarget();
-                if (temp.tag == "Player" && isAlone)
-                {
-                    Flee(temp.transform.position);
-                    ShouldWander = false;
-                }
-                else if (temp.tag == "Player" && !isAlone)
-                {
-                    Seek(temp.transform.position, 2.5f);
-                    target = temp;
-                }
-                else if (temp.tag == "Goblin" && partner == null)
-                {
-                    isAlone = false;
-                    partner = temp;
-                }
-            }
-
-            if(partner != null && Vector3.Distance(transform.position, partner.transform.position) > 5)
-            {
-                ShouldWander = false;
-                Seek(partner.transform.position, seperation);
-            }
-
-            if (ShouldWander) // wanter when not turning
-            {
-                Wander();
+                Flee(temp.transform.position);
                 ShouldWander = false;
             }
-            else
+            else if (temp.tag == "Player" && !isAlone)
             {
-                wanderTimeActual -= Time.deltaTime;
-                if (wanderTimeActual <= 0.0f) // resets time of next wander
-                {
-                    wanderTimeActual = wanderTime;
-                    ShouldWander = true;
-                }
+                Seek(temp.transform.position, 2.5f);
+                target = temp;
+            }
+            else if (temp.tag == "Goblin" && partner == null)
+            {
+                isAlone = false;
+                partner = temp;
+            }
+        }
+
+        if(partner != null && Vector3.Distance(transform.position, partner.transform.position) > 5)
+        {
+            ShouldWander = false;
+            Seek(partner.transform.position, seperation);
+        }
+
+        if (ShouldWander) // wander when not turning
+        {
+            Wander();
+            ShouldWander = false;
+        }
+        else
+        {
+            wanderTimeActual -= Time.deltaTime;
+            if (wanderTimeActual <= 0.0f) // resets time of next wander
+            {
+                wanderTimeActual = wanderTime;
+                ShouldWander = true;
             }
         }
     }

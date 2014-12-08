@@ -18,7 +18,10 @@ public class Projectile : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 		transform.Translate(Vector3.forward * speed * Time.deltaTime);
-		sprite.transform.Rotate (Vector3.forward, rotationSpeed * Time.deltaTime);
+		if(sprite != null)
+		{
+			sprite.transform.Rotate (Vector3.forward, rotationSpeed * Time.deltaTime);
+		}
 	}
 	
 	void OnCollisionEnter (Collision collision) {

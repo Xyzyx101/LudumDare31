@@ -74,28 +74,36 @@ public class GoblinBehaviour : SteeringBehaviour
         if (AgroSensor.isColliding)
         {
             GameObject temp = AgroSensor.GiveTarget();
+            /*
             if (temp.tag == "Player" && isAlone)
             {
+                
                 Flee(temp.transform.position);
                 ShouldWander = false;
+                
             }
-            else if (temp.tag == "Player" && !isAlone)
+            */
+            if (temp.tag == "Player" /*&& !isAlone*/) // Originally a else if
             {
                 Seek(temp.transform.position, 2.5f);
                 target = temp;
             }
+            /*
             else if (temp.tag == "Goblin" && partner == null)
             {
                 isAlone = false;
                 partner = temp;
             }
+            */
         }
 
+        /*
         if(partner != null && Vector3.Distance(transform.position, partner.transform.position) > 5)
         {
             ShouldWander = false;
             Seek(partner.transform.position, seperation);
         }
+        */
 
         if (ShouldWander) // wander when not turning
         {

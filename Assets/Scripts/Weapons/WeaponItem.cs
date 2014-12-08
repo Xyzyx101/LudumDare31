@@ -42,7 +42,7 @@ public class WeaponItem : MonoBehaviour {
 		{
 			enchanted = false;
 		}
-		if (this.name == "StaffItem") {
+		if (this.tag == "fireball-weapon") {
 			charges = Random.Range(2, 6);
 		}
 	}

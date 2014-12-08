@@ -138,19 +138,17 @@ public class Player : MonoBehaviour
         {
             if (isAlive)
             {
-                bool primaryAttack = Input.GetMouseButtonDown(0);
+                bool primaryAttack = Input.GetMouseButton(0);
 
                 if (primaryWeapon != null && primaryAttack)
                 {
 					primaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-					secondaryWeapon.SetActive(false);
 					primaryWeapon.SetActive(true);
                 }
-                bool secondaryAttack = Input.GetMouseButtonDown(1);
+                bool secondaryAttack = Input.GetMouseButton(1);
 			    if (secondaryWeapon != null && secondaryAttack)
 			    {
 					secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
-					primaryWeapon.SetActive(false);
 					secondaryWeapon.SetActive(true);
 			    }
 
@@ -213,7 +211,7 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.primaryWeapon)
 				{
-					if( inventory.primaryWeapon.name == "StaffItem" ) {
+					if( inventory.primaryWeapon.tag == "fireball-weapon" ) {
 						ProjectileWeapon weaponScript = primaryWeapon.GetComponent<ProjectileWeapon>();
 						WeaponItem itemScript = inventory.primaryWeapon.GetComponent<WeaponItem>();
 						itemScript.charges = weaponScript.charges;
@@ -277,7 +275,7 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.secondaryWeapon)
 				{
-					if( inventory.secondaryWeapon.name == "StaffItem" ) {
+					if( inventory.secondaryWeapon.tag == "fireball-weapon" ) {
 						ProjectileWeapon weaponScript = secondaryWeapon.GetComponent<ProjectileWeapon>();
 						WeaponItem itemScript = inventory.secondaryWeapon.GetComponent<WeaponItem>();
 						itemScript.charges = weaponScript.charges;

@@ -7,7 +7,7 @@ public class StatGUI : MonoBehaviour
     private GUISkin Skin;
     public Player playerScript;
 
-    void Awake()
+    void Start()
     {
         Skin = GuiManager.GetSkin();
     }

@@ -8,6 +8,9 @@ public class EnemyStats : MonoBehaviour
     public float strength = 1;
     public float damage { set; get; }
     private int gameDiff;
+    public GameObject[] Spawnable;
+    public int chanceToSpawn = 25;
+    private bool dropCheck = true;
 
     void Awake()
     {
@@ -25,6 +28,12 @@ public class EnemyStats : MonoBehaviour
     {
         if (hp <= 0)
         {
+            if (Random.Range(0, 100) < chanceToSpawn && dropCheck)
+            {
+                dropCheck = false;
+                int objectToSpawn = Random.Range(0, Spawnable.Length);
+                GameObject spawnedObject = (GameObject)Instantiate(Spawnable[objectToSpawn], this.transform.position, Spawnable[objectToSpawn].transform.rotation);
+            }
             Destroy(this.gameObject);
         }
     }

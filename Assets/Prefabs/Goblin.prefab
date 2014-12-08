@@ -212,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.438516378, y: -.499999255, z: 2.79262018}
+  m_LocalPosition: {x: -4.19000006, y: 0, z: 2.17000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -479,6 +479,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHP: 2
   strength: 1
+  Spawnable:
+  - {fileID: 100000, guid: 7e7803dca7dce1f4281d4294004a5a5e, type: 2}
+  - {fileID: 100000, guid: 39b2bcc0b003c484885a4f3155442ece, type: 2}
+  - {fileID: 100000, guid: addbd7f9c8188ca45ae7896854efd405, type: 2}
+  - {fileID: 100000, guid: a741933648e8c8448b64868dd02f5479, type: 2}
+  - {fileID: 100000, guid: aaa0c6933d9a6b443bcbad2eafdb0370, type: 2}
+  - {fileID: 100000, guid: 9a497f5224a259f45a297584d408e3ba, type: 2}
+  - {fileID: 100000, guid: 00aa779fe830a0a4c84c8d18bf2eed66, type: 2}
+  - {fileID: 100000, guid: d73017782d8398041b4ca5f164a74610, type: 2}
+  chanceToSpawn: 25
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1

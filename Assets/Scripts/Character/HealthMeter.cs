@@ -53,7 +53,7 @@ public class HealthMeter : MonoBehaviour
         }
 	}
 
-    void Awake()
+    void Start()
     {
         Skin = GuiManager.GetSkin();
     }

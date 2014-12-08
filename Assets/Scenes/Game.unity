@@ -1966,6 +1966,7 @@ GameObject:
   - 135: {fileID: 869032403}
   - 114: {fileID: 869032402}
   - 95: {fileID: 869032408}
+  - 114: {fileID: 869032409}
   - 114: {fileID: 869032407}
   m_Layer: 8
   m_Name: Player
@@ -2025,10 +2026,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &869032405
 MonoBehaviour:
@@ -2099,6 +2100,20 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &869032409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400028, guid: 825e03c0699c16544900fe6543587be7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600393903}
+  m_GameObject: {fileID: 869032400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
+  playerScript: {fileID: 869032406}
 --- !u!1001 &870828146
 Prefab:
   m_ObjectHideFlags: 0

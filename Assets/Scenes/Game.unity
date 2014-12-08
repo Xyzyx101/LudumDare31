@@ -2412,6 +2412,7 @@ GameObject:
   - 4: {fileID: 1123574476}
   - 114: {fileID: 1123574475}
   - 114: {fileID: 1123574474}
+  - 114: {fileID: 1123574478}
   - 114: {fileID: 1123574477}
   m_Layer: 0
   m_Name: Managers
@@ -2432,21 +2433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78cc015c32e18a47a4817ec2ae5182e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicAmount: 4
-  MenuMusicPlayer: {fileID: 0}
-  CharMusicPlayer: {fileID: 0}
-  IngameMusicPlayer: {fileID: 0}
-  VictoryMusicPlayer: {fileID: 0}
-  button: {fileID: 0}
-  jump: {fileID: 0}
-  objectiveComplete: {fileID: 0}
-  swing: {fileID: 0}
-  death: {fileID: 0}
-  enemyDeath: {fileID: 0}
-  laugh: {fileID: 0}
-  hit: {fileID: 0}
-  guitar: {fileID: 0}
-  leave: {fileID: 0}
+  MusicPlayer: {fileID: 0}
+  Sounds: []
 --- !u!114 &1123574475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,6 +2464,19 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123574473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dcd32b44f0bf8418e1edc3ce25eeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiSkin: {fileID: 11400000, guid: 32498cdc4cfa9ee4c8b1b8eafecd4d9e, type: 2}
+--- !u!114 &1123574478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 416c40ad5a550bd45800117446e1728f,
+    type: 2}
+  m_PrefabInternal: {fileID: 870828146}
   m_GameObject: {fileID: 1123574473}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3492,6 +3493,10 @@ Prefab:
       propertyPath: secondaryWeapon
       value: 
       objectReference: {fileID: 422715184}
+    - target: {fileID: 100050, guid: 825e03c0699c16544900fe6543587be7, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 825e03c0699c16544900fe6543587be7, type: 2}
   m_RootGameObject: {fileID: 869032400}

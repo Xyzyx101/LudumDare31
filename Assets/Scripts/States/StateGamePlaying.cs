@@ -8,7 +8,7 @@ public class StateGamePlaying : GameState
 	
 	public override void OnStateEntered()
 	{
-		
+        Time.timeScale = 1f;
 	}
 	public override void OnStateExit(){}
 	
@@ -29,7 +29,8 @@ public class StateGamePlaying : GameState
 	}
 	
 	public override void StateGUI() 
-	{	
+	{
+        GUILayout.Label("state: PLAYING");
 		if(isPaused)
 		{
 			string[] names = QualitySettings.names;

@@ -7,7 +7,7 @@ public class StateGameMenu : GameState
 	
 	public override void OnStateEntered()
 	{
-		Application.LoadLevel(0);
+        Time.timeScale = 0.0f;
 	}
 	public override void OnStateExit(){}
 	public override void StateUpdate() {}
@@ -16,12 +16,9 @@ public class StateGameMenu : GameState
 	{
 		GUILayout.Label("state: MENU");
 
-        if (gameManager.currentState != gameManager.stateGamePlaying)
+        if (GUI.Button(new Rect(Screen.width * 0.05f, Screen.height - Screen.height * 0.2f, Screen.width * 0.1f, Screen.height * 0.1f), "Play Game"))
         {
-            if (GUI.Button(new Rect(Screen.width * 0.05f, Screen.height - Screen.height * 0.2f, Screen.width * 0.1f, Screen.height * 0.1f), "Play Game"))
-            {
-                gameManager.NewGameState(gameManager.stateGamePlaying);
-            }
+            gameManager.NewGameState(gameManager.stateGamePlaying);
         }
 	}
 }

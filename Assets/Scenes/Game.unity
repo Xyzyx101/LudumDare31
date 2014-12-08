@@ -1062,7 +1062,7 @@ Transform:
   - {fileID: 147271110}
   - {fileID: 1594820537}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!114 &415154389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,7 +3643,7 @@ Transform:
   m_LocalScale: {x: 1.70000005, y: 1.70000005, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &1840988331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4330,7 +4330,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: 825e03c0699c16544900fe6543587be7, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 11400020, guid: 825e03c0699c16544900fe6543587be7, type: 2}
       propertyPath: iconInteract

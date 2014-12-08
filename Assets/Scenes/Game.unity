@@ -1171,8 +1171,6 @@ MonoBehaviour:
   hpPerVitality: 5
   primaryWeapon: {fileID: 1684378012}
   secondaryWeapon: {fileID: 1684378012}
-  maxHP: 0
-  currHP: 0
   healthScript: {fileID: 415154391}
   statGui: {fileID: 415154389}
 --- !u!1 &430993350
@@ -1787,7 +1785,7 @@ Prefab:
     - target: {fileID: 11400002, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
       propertyPath: playerScript
       value: 
-      objectReference: {fileID: 869032406}
+      objectReference: {fileID: 415154395}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
   m_RootGameObject: {fileID: 1123574473}
@@ -2110,7 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameoverIMG: {fileID: 2800000, guid: 3c5f17e6698d1404098092e73d962c25, type: 3}
-  playerScript: {fileID: 869032406}
+  playerScript: {fileID: 415154395}
 --- !u!4 &1123574476
 Transform:
   m_ObjectHideFlags: 0

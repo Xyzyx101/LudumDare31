@@ -12,6 +12,7 @@ public class Breakable : MonoBehaviour {
 		{
 			int objectToSpawn = Random.Range(0, Spawnable.Length); 
 			GameObject spawnedObject = (GameObject)Instantiate(Spawnable[objectToSpawn], this.transform.position, Spawnable[objectToSpawn].transform.rotation);
+			spawnedObject.transform.parent = this.transform.parent;
 		}
 
 		Destroy (this.gameObject);

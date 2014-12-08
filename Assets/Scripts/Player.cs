@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
 			case "Armour":
 				if(inventory.armour)
 				{
-					inventory.armour.transform.parent = null;
+					inventory.armour.transform.parent = item.transform.parent;
 					inventory.armour.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.armour.GetComponent<SphereCollider>().enabled = true;
 				}
@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
 			case "Ring":
 				if(inventory.ring)
 				{
-					inventory.ring.transform.parent = null;
+					inventory.ring.transform.parent = item.transform.parent;
 					inventory.ring.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.ring.GetComponent<SphereCollider>().enabled = true;
 				}
@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.primaryWeapon)
 				{
-					inventory.primaryWeapon.transform.parent = null;
+					inventory.primaryWeapon.transform.parent = item.transform.parent;
 					inventory.primaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.primaryWeapon.GetComponent<SphereCollider>().enabled = true;
 				}
@@ -211,8 +211,8 @@ public class Player : MonoBehaviour
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
 		}
-		Transform newWeapon = transform.Find("WeaponBindPoint/" + inventory.primaryWeapon.tag);
-		if( newWeapon ) {
+		Transform newWeapon;
+		if(newWeapon = transform.Find("WeaponBindPoint/" + inventory.primaryWeapon.tag)) {
 			primaryWeapon = newWeapon.gameObject;
 			WeaponItem script = inventory.primaryWeapon.GetComponent<WeaponItem>();
 			float pDmg = script.GetDamage();
@@ -239,7 +239,7 @@ public class Player : MonoBehaviour
 			case "Armour":
 				if(inventory.armour)
 				{
-					inventory.armour.transform.parent = null;
+					inventory.armour.transform.parent = item.transform.parent;
 					inventory.armour.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.armour.GetComponent<SphereCollider>().enabled = true;
 				}
@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
 			case "Ring":
 				if(inventory.ring)
 				{
-					inventory.ring.transform.parent = null;
+					inventory.ring.transform.parent = item.transform.parent;
 					inventory.ring.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.ring.GetComponent<SphereCollider>().enabled = true;
 				}
@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.secondaryWeapon)
 				{
-					inventory.secondaryWeapon.transform.parent = null;
+					inventory.secondaryWeapon.transform.parent = item.transform.parent;
 					inventory.secondaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.secondaryWeapon.GetComponent<SphereCollider>().enabled = true;
 				}

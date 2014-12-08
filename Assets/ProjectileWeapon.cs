@@ -24,7 +24,6 @@ public class ProjectileWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(shootTime);
 		shootTime -= Time.deltaTime;
 		if (canShoot) {
 			GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;

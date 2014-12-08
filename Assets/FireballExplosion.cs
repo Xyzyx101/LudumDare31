@@ -16,8 +16,16 @@ public class FireballExplosion : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		DamageMessage (other.gameObject);
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		DamageMessage (collision.gameObject);
+	}
+
+	void DamageMessage (GameObject target) {
 		if ( damageActive ) {
-			other.gameObject.SendMessageUpwards("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
+			target.SendMessageUpwards("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

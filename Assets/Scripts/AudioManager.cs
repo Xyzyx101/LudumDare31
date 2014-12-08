@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         leaveState = false;
 	}
 
-    public int musicAmount = 4;
+    private int musicAmount = 1;
     public GameObject MusicPlayer;
     private GameObject[] Musics;
     public AudioClip[] Sounds;

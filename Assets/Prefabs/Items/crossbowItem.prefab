@@ -44,7 +44,8 @@ MonoBehaviour:
   chanceOfEnchant: 70
   chanceOfStat: 70
   statMultiplier: .25
-  DamageToLevelMultiplyer: .5
+  DamageToLevelMultiplyer: .75
+  charges: 0
   enchanted: 0
 --- !u!135 &13500000
 SphereCollider:

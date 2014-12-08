@@ -33,7 +33,6 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void Update()
     {
-		Debug.Log (attackDelayTimer);
 		attackDelayTimer -= Time.deltaTime;
 		if (attackDelayTimer < 0) {
 			canAttack = true;

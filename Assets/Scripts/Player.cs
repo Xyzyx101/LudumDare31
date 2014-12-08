@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
+	public float speedMultiplier = 15;
 	public float speed = 150.0F;
 	public float turnSpeed = 0.1f;
 	public Transform target;
@@ -98,9 +99,9 @@ public class Player : MonoBehaviour
 			int[] tempArray;
 			Armour script = inventory.armour.GetComponent<Armour>();
 			tempArray = script.getItemStats();
-			if(script.enchanted)
+			for(int i = 0; i < 5; i++)
 			{
-				for(int i = 0; i < 5; i++)
+				if(script.enchanted || i == (int)stats.Defense)
 				{
 					calPlayerStats[i] += tempArray[i];
 				}
@@ -122,12 +123,13 @@ public class Player : MonoBehaviour
 			}		
 		}
 
-		//calc max hp and wepon damage
-		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
+		//calc max hp
+		maxHP = hpPerVitality * calPlayerStats[(int)stats.Vitality];
 		currHP += maxHP - prevHP;
         healthScript.SetMaxHitPoints(maxHP);
         healthScript.SetHealth(currHP);
-	}
+		//calc speed
+		speed = speedMultiplier * calPlayerStats[(int)stats.Speed];	}
 	
 	// Update is called once per frame
 	void Update() 
@@ -141,14 +143,12 @@ public class Player : MonoBehaviour
                 if (primaryWeapon != null && primaryAttack)
                 {
 					primaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-					secondaryWeapon.SetActive(false);
 					primaryWeapon.SetActive(true);
                 }
                 bool secondaryAttack = Input.GetMouseButton(1);
 			    if (secondaryWeapon != null && secondaryAttack)
 			    {
 					secondaryWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
-					primaryWeapon.SetActive(false);
 					secondaryWeapon.SetActive(true);
 			    }
 
@@ -211,6 +211,11 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.primaryWeapon)
 				{
+					if( inventory.primaryWeapon.tag == "fireball-weapon" ) {
+						ProjectileWeapon weaponScript = primaryWeapon.GetComponent<ProjectileWeapon>();
+						WeaponItem itemScript = inventory.primaryWeapon.GetComponent<WeaponItem>();
+						itemScript.charges = weaponScript.charges;
+					}
 					inventory.primaryWeapon.transform.parent = item.transform.parent;
 					inventory.primaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.primaryWeapon.GetComponent<SphereCollider>().enabled = true;
@@ -234,7 +239,7 @@ public class Player : MonoBehaviour
 			}
 			ProjectileWeapon projWeapon = primaryWeapon.GetComponent<ProjectileWeapon>();
 			if ( projWeapon ) {
-				projWeapon.InitWithDamage(pDmg);
+				projWeapon.InitWithDamageAndCharges(pDmg, script.charges);
 			}
 		}
         statGui.UpdateWeapons();
@@ -270,6 +275,11 @@ public class Player : MonoBehaviour
 			default:
 				if(inventory.secondaryWeapon)
 				{
+					if( inventory.secondaryWeapon.tag == "fireball-weapon" ) {
+						ProjectileWeapon weaponScript = secondaryWeapon.GetComponent<ProjectileWeapon>();
+						WeaponItem itemScript = inventory.secondaryWeapon.GetComponent<WeaponItem>();
+						itemScript.charges = weaponScript.charges;
+					}
 					inventory.secondaryWeapon.transform.parent = item.transform.parent;
 					inventory.secondaryWeapon.GetComponent<SpriteRenderer>().enabled = true;
 					inventory.secondaryWeapon.GetComponent<SphereCollider>().enabled = true;
@@ -294,7 +304,7 @@ public class Player : MonoBehaviour
 			}
 			ProjectileWeapon projWeapon = secondaryWeapon.GetComponent<ProjectileWeapon>();
 			if ( projWeapon ) {
-				projWeapon.InitWithDamage(pDmg);
+				projWeapon.InitWithDamageAndCharges(pDmg, script.charges);
 			}
 		}
         statGui.UpdateWeapons();
@@ -302,7 +312,10 @@ public class Player : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-        currHP -= (int)damage;
+		//apply defence to damage
+		damage = damage * (100/(100 + calPlayerStats[(int)stats.Defense]));
+
+        currHP -= Mathf.CeilToInt(damage);//so you always take at least 1 damage.
         healthScript.SetHealth(currHP);
         if(currHP <= 0)
         {

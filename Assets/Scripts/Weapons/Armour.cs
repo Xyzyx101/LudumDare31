@@ -11,7 +11,7 @@ public class Armour : MonoBehaviour {
 	
 	public bool enchanted;
 	
-	private int[] itemStats = new int[]{0,0,0,0,0};
+	public int[] itemStats = new int[]{0,0,0,0,0};
 	
 	// Use this for initialization
 	void Start () {
@@ -25,10 +25,6 @@ public class Armour : MonoBehaviour {
 			if (Random.Range(0, 100) > chanceOfStat)
 			{
 				itemStats[i] += Mathf.FloorToInt(Random.Range(0, itemLevel) * statMultiplier - (itemLevel * statMultiplier));
-			}
-			else
-			{
-				itemStats[i] = 0;
 			}
 		}
 		

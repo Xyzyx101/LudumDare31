@@ -7,7 +7,6 @@ public class Breakable : MonoBehaviour {
 
 	public void DoDamage(float damage)
 	{
-		Debug.Log ("smashy Smashy");
 		if(Random.Range(0, 100) < chanceToSpawn)
 		{
 			int objectToSpawn = Random.Range(0, Spawnable.Length); 

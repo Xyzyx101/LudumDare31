@@ -44,8 +44,9 @@ MonoBehaviour:
   chanceOfEnchant: 70
   chanceOfStat: 70
   statMultiplier: .25
-  DefenseToLevelMultiplyer: .300000012
+  DefenseToLevelMultiplyer: 1
   enchanted: 0
+  itemStats: 0000000000000000000000000000000000000000
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

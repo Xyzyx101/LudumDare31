@@ -426,9 +426,10 @@ GameObject:
   - 114: {fileID: 11400022}
   - 95: {fileID: 9500012}
   - 114: {fileID: 11400028}
+  - 114: {fileID: 11400030}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,6 +1197,19 @@ MonoBehaviour:
   StrBonus: 1
   DexBonus: 0
 --- !u!114 &11400028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
+  playerScript: {fileID: 11400018}
+--- !u!114 &11400030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

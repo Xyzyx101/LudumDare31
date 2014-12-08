@@ -6,21 +6,26 @@ public class HealthMeter : MonoBehaviour
 	public Texture2D image;
 	private float hitPoints = 0;
 	private float maxHitPoints = 0;
-    float normalisedHealth;
+    private float normalisedHealth;
+
+    public GUISkin Skin;
 	
 	private void OnGUI()
 	{
-		normalisedHealth = (float)hitPoints / maxHitPoints;
+        normalisedHealth = (float)hitPoints / maxHitPoints;
 
         GUI.depth = 1;
 
         GUI.color = Color.black;
-        GUI.DrawTexture(new Rect(Screen.width * 0.2f - 2, (Screen.height * 0.125f), (Screen.width * 0.2f) + 4, (Screen.height * 0.05f) + 4), image);
+        GUI.DrawTexture(new Rect(Screen.width * 0.01f - 2, (Screen.height * 0.13f), (Screen.width * 0.19f) + 4, (Screen.height * 0.05f) + 4), image);
         GUI.color = Color.white;
 
-        whatColor();
-        GUI.DrawTexture(new Rect(Screen.width * 0.2f, (Screen.height * 0.125f) + 2, (Screen.width * 0.2f) * normalisedHealth, Screen.height * 0.05f), image);
+        GUI.color = Color.Lerp(Color.red, Color.green, normalisedHealth);
+        GUI.DrawTexture(new Rect(Screen.width * 0.01f, (Screen.height * 0.13f) + 2, (Screen.width * 0.19f) * normalisedHealth, Screen.height * 0.05f), image);
         GUI.color = Color.white;
+
+        GUI.skin = Skin;
+        GUI.Label(new Rect(Screen.width * 0.01f - 2, (Screen.height * 0.13f), (Screen.width * 0.19f) + 4, (Screen.height * 0.05f) + 4), "Health");
 	}
 	
     void Update()
@@ -50,17 +55,6 @@ public class HealthMeter : MonoBehaviour
 
     void whatColor()
     {
-        if (normalisedHealth <= 0.25f)
-        {
-            GUI.color = Color.red;
-        }
-        else if (normalisedHealth <= 0.75f)
-        {
-            GUI.color = Color.yellow;
-        }
-        else
-        {
-            GUI.color = Color.green;
-        }
+        
     }
 }

@@ -40,17 +40,7 @@ public class EnemyHPBar : MonoBehaviour
 
         hpQuad.transform.localScale = new Vector3(quadMaxLength * normalisedHealth, hpQuad.transform.localScale.y, hpQuad.transform.localScale.z);
 
-        if (normalisedHealth <= 0.25f)
-        {
-            hpQuad.renderer.material.color = Color.red;
-        }
-        else if (normalisedHealth <= 0.75f)
-        {
-            hpQuad.renderer.material.color = Color.yellow;
-        }
-        else
-        {
-            hpQuad.renderer.material.color = Color.green;
-        }
+        hpQuad.renderer.material.color = Color.Lerp(Color.red, Color.green, normalisedHealth); ;
+
 	}
 }

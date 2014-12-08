@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 		stateGameLost = new StateGameLost(this);
 		stateGameIntro = new StateGameIntro(this);
 		stateGameMenu = new StateGameMenu(this);
-
 	}	
 	
 	private void Start () 

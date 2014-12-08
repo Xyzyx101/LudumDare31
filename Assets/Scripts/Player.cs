@@ -39,6 +39,18 @@ public class Player : MonoBehaviour
 
     public HealthMeter healthScript;
 
+    void Awake()
+    {
+        CalculatePlayerStats();
+        healthScript.SetMaxHitPoints(maxHP);
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
 	private void CalculatePlayerStats() 
 	{
 		//get the current hp so that we can proporly increase your hp
@@ -156,18 +168,6 @@ public class Player : MonoBehaviour
 
 		primaryDmg = pDmg + calPlayerStats [(int)stats.Strength];
 		secondaryDmg = sDmg + calPlayerStats [(int)stats.Strength];
-	}
-
-    void Awake()
-    {
-        CalculatePlayerStats();
-        healthScript.SetMaxHitPoints(maxHP);
-    }
-
-	// Use this for initialization
-	void Start () 
-    {
-        
 	}
 	
 	// Update is called once per frame

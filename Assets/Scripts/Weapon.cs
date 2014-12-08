@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour {
 	public float activeTime;
+	public DamageEnemy damageEnemy;
 	private float killTime;
 	
 	public void InitWithDamage(float damage) {
-		DamageEnemy damageEnemy = GetComponentInChildren<DamageEnemy>();
 		damageEnemy.SetDamage(damage);
 	}
 

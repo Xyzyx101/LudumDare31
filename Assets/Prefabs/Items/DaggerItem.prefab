@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
+  - 135: {fileID: 13500000}
   - 114: {fileID: 11400000}
-  - 136: {fileID: 13600000}
-  m_Layer: 9
-  m_Name: Pot
-  m_TagString: Untagged
+  m_Layer: 19
+  m_Name: DaggerItem
+  m_TagString: dagger-weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.50000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,28 +38,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08405b6fcd323d4e8eee28350a3263e, type: 3}
+  m_Script: {fileID: 11500000, guid: bdc7fafebd473fa4493e6cf0b98dee4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawnable:
-  - {fileID: 100000, guid: 7e7803dca7dce1f4281d4294004a5a5e, type: 2}
-  - {fileID: 100000, guid: 39b2bcc0b003c484885a4f3155442ece, type: 2}
-  - {fileID: 100000, guid: addbd7f9c8188ca45ae7896854efd405, type: 2}
-  - {fileID: 100000, guid: a741933648e8c8448b64868dd02f5479, type: 2}
-  - {fileID: 100000, guid: aaa0c6933d9a6b443bcbad2eafdb0370, type: 2}
-  - {fileID: 100000, guid: 9a497f5224a259f45a297584d408e3ba, type: 2}
-  - {fileID: 100000, guid: 00aa779fe830a0a4c84c8d18bf2eed66, type: 2}
-  - {fileID: 100000, guid: d73017782d8398041b4ca5f164a74610, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  chanceToSpawn: 35
---- !u!136 &13600000
-CapsuleCollider:
+  chanceOfEnchant: 70
+  chanceOfStat: 70
+  statMultiplier: .25
+  DamageToLevelMultiplyer: .5
+  enchanted: 0
+--- !u!135 &13500000
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -67,10 +55,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .319999993
-  m_Height: 3
-  m_Direction: 2
-  m_Center: {x: 0, y: -1.1920929e-07, z: 0}
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,7 +78,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 14bf5f5fd6032f6498e520cdf15b3249, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0888af341b900549944781d00e2a2a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

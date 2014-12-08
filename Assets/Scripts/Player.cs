@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 	private float desiredAngle;
 
     public HealthMeter healthScript;
+    public StatGUI statGui;
 
     public static bool go { get; set; }
 
@@ -231,6 +232,7 @@ public class Player : MonoBehaviour
 				projWeapon.InitWithDamage(pDmg);
 			}
 		}
+        statGui.UpdateWeapons();
 	}
 	
 	public void PickupSecondaryItem(Vector3  pos, GameObject item)
@@ -290,6 +292,7 @@ public class Player : MonoBehaviour
 				projWeapon.InitWithDamage(pDmg);
 			}
 		}
+        statGui.UpdateWeapons();
 	}
 
     public void DoDamage(float damage)

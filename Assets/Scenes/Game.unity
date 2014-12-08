@@ -1967,11 +1967,9 @@ GameObject:
   - 114: {fileID: 869032402}
   - 95: {fileID: 869032408}
   - 114: {fileID: 869032409}
-  - 114: {fileID: 869032410}
-  - 114: {fileID: 869032407}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2072,19 +2070,7 @@ MonoBehaviour:
   primaryWeapon: {fileID: 422715184}
   secondaryWeapon: {fileID: 422715184}
   healthScript: {fileID: 869032402}
---- !u!114 &869032407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869032400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
-  playerScript: {fileID: 869032406}
+  statGui: {fileID: 869032409}
 --- !u!95 &869032408
 Animator:
   serializedVersion: 3
@@ -2105,20 +2091,6 @@ Animator:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400028, guid: 825e03c0699c16544900fe6543587be7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1600393903}
-  m_GameObject: {fileID: 869032400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
-  playerScript: {fileID: 869032406}
---- !u!114 &869032410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400030, guid: 825e03c0699c16544900fe6543587be7,
     type: 2}
   m_PrefabInternal: {fileID: 1600393903}
   m_GameObject: {fileID: 869032400}
@@ -3497,9 +3469,14 @@ Prefab:
       objectReference: {fileID: 422715184}
     - target: {fileID: 100050, guid: 825e03c0699c16544900fe6543587be7, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400018, guid: 825e03c0699c16544900fe6543587be7, type: 2}
+      propertyPath: statGui
+      value: 
+      objectReference: {fileID: 869032409}
+    m_RemovedComponents:
+    - {fileID: 11400030, guid: 825e03c0699c16544900fe6543587be7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 825e03c0699c16544900fe6543587be7, type: 2}
   m_RootGameObject: {fileID: 869032400}
   m_IsPrefabParent: 0

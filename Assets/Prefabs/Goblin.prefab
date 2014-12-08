@@ -130,6 +130,8 @@ GameObject:
   - 4: {fileID: 400014}
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400016}
+  - 136: {fileID: 13600000}
   m_Layer: 14
   m_Name: ArmSprite
   m_TagString: Untagged
@@ -502,6 +504,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: .300000012
   damageEnemy: {fileID: 0}
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad8adc844726c6459b57cd9791208d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  StrBonus: 0
+  DexBonus: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -538,6 +554,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .400000006
   m_Center: {x: 0, y: 0, z: .200000003}
+--- !u!136 &13600000
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .100000001
+  m_Height: .460000008
+  m_Direction: 1
+  m_Center: {x: -.0599999987, y: .150000006, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

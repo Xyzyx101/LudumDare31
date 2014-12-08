@@ -7,8 +7,7 @@ public class ProjectileWeapon : MonoBehaviour {
 	public float damage = 5f;
 	private float shootTime;
 	private bool canShoot;
-
-
+	
 	public void InitWithDamage(float newDamage) {
 		damage = newDamage;
 	}
@@ -25,6 +24,7 @@ public class ProjectileWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log(shootTime);
 		shootTime -= Time.deltaTime;
 		if (canShoot) {
 			GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;

@@ -212,8 +212,22 @@ public class Player : MonoBehaviour
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
 		}
+		Transform newWeapon = transform.Find("WeaponBindPoint/" + inventory.primaryWeapon.tag);
+		if( newWeapon ) {
+			primaryWeapon = newWeapon.gameObject;
+			WeaponItem script = inventory.primaryWeapon.GetComponent<WeaponItem>();
+			float pDmg = script.GetDamage();
+			Weapon weapon = primaryWeapon.GetComponent<Weapon>();
+			if ( weapon ) {
+				weapon.InitWithDamage(pDmg);
+			}
+			ProjectileWeapon projWeapon = primaryWeapon.GetComponent<ProjectileWeapon>();
+			if ( projWeapon ) {
+				projWeapon.InitWithDamage(pDmg);
+			}
+		}
 	}
-
+	
 	public void PickupSecondaryItem(Vector3  pos, GameObject item)
 	{
 		Vector2 posThis = new Vector2 (transform.position.x, transform.position.z);
@@ -256,10 +270,6 @@ public class Player : MonoBehaviour
 			item.GetComponent<SphereCollider>().enabled = false;
 			CalculatePlayerStats();
 			//init weapon?
-
-			//primaryWeapon = transform.Find(inventory.primaryWeapon.tag);
-
-			//InitWithDamage(float damage) 
 		}
 	}
 

@@ -9,14 +9,19 @@ TagManager:
   - Room3
   - Room4
   - RoomManager
-  - Sword
-  - Staff
-  - Bow
+  - sword
+  - crossbow-weapon
+  - 
   - Armour
   - Ring
-  - Spear
-  - Axe
-  - Dagger
+  - spear
+  - axe
+  - dagger-weapon
+  - fireball-weapon
+  - 
+  - 
+  - 
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

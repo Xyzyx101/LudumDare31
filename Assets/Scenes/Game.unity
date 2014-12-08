@@ -1641,7 +1641,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 50320b124cfe8a94890de65da4744916, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50320b124cfe8a94890de65da4744916, type: 2}
       propertyPath: rooms.Array.data[0]
@@ -1967,6 +1967,7 @@ GameObject:
   - 114: {fileID: 869032402}
   - 95: {fileID: 869032408}
   - 114: {fileID: 869032409}
+  - 114: {fileID: 869032410}
   - 114: {fileID: 869032407}
   m_Layer: 8
   m_Name: Player
@@ -1988,7 +1989,7 @@ Transform:
   - {fileID: 1798473984}
   - {fileID: 926663704}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &869032402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,6 +2115,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
   playerScript: {fileID: 869032406}
+--- !u!114 &869032410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400030, guid: 825e03c0699c16544900fe6543587be7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600393903}
+  m_GameObject: {fileID: 869032400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb557c8080b2ee4ebf4250eac29b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: f3476d35bd2144d468e8e208881fae9f, type: 3}
+  playerScript: {fileID: 869032406}
 --- !u!1001 &870828146
 Prefab:
   m_ObjectHideFlags: 0
@@ -2151,7 +2166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
       propertyPath: canvas
@@ -2413,7 +2428,6 @@ GameObject:
   - 114: {fileID: 1123574475}
   - 114: {fileID: 1123574474}
   - 114: {fileID: 1123574478}
-  - 114: {fileID: 1123574477}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2458,19 +2472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
---- !u!114 &1123574477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1123574473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64dcd32b44f0bf8418e1edc3ce25eeb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  guiSkin: {fileID: 11400000, guid: 32498cdc4cfa9ee4c8b1b8eafecd4d9e, type: 2}
+  m_RootOrder: 0
 --- !u!114 &1123574478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2650,7 +2652,7 @@ Transform:
   - {fileID: 1496018506}
   - {fileID: 1874990692}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1207590936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3463,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: 825e03c0699c16544900fe6543587be7, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400018, guid: 825e03c0699c16544900fe6543587be7, type: 2}
       propertyPath: hpPerVitality

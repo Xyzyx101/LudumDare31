@@ -18,6 +18,7 @@ public class StateGameMenu : GameState
 
         if (GUI.Button(new Rect(Screen.width * 0.05f, Screen.height - Screen.height * 0.2f, Screen.width * 0.1f, Screen.height * 0.1f), "Play Game"))
         {
+            Player.go = true;
             gameManager.NewGameState(gameManager.stateGamePlaying);
         }
 	}

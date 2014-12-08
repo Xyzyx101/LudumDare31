@@ -39,8 +39,11 @@ public class Player : MonoBehaviour
 
     public HealthMeter healthScript;
 
+    public static bool go { get; set; }
+
     void Awake()
     {
+        go = false;
         CalculatePlayerStats();
         healthScript.SetMaxHitPoints(maxHP);
     }
@@ -127,35 +130,38 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
     {
-        if (isAlive)
+        if(go)
         {
-            bool primaryAttack = Input.GetMouseButton(0);
-
-            if (primaryWeapon != null && primaryAttack)
+            if (isAlive)
             {
-                primaryWeapon.SetActive(true);
-            }
-            bool secondaryAttack = Input.GetMouseButton(1);
-			if (secondaryWeapon != null && secondaryAttack)
-			{
-				secondaryWeapon.SetActive(true);
-			}
+                bool primaryAttack = Input.GetMouseButton(0);
 
-            if (!primaryAttack && !secondaryAttack)
+                if (primaryWeapon != null && primaryAttack)
+                {
+                    primaryWeapon.SetActive(true);
+                }
+                bool secondaryAttack = Input.GetMouseButton(1);
+			    if (secondaryWeapon != null && secondaryAttack)
+			    {
+				    secondaryWeapon.SetActive(true);
+			    }
+
+                if (!primaryAttack && !secondaryAttack)
+                {
+                    float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
+                    transform.localEulerAngles = new Vector3(0, angle, 0);
+                }
+
+                vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+                hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+                vSpeed *= Time.deltaTime;
+                hSpeed *= Time.deltaTime;
+                transform.Translate(hSpeed, 0, vSpeed, null);
+            }
+            else
             {
-                float angle = Mathf.LerpAngle(transform.localEulerAngles.y, desiredAngle, 0.1f);
-                transform.localEulerAngles = new Vector3(0, angle, 0);
+                Debug.Log("FixMe Im Dead");
             }
-
-            vSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            hSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            vSpeed *= Time.deltaTime;
-            hSpeed *= Time.deltaTime;
-            transform.Translate(hSpeed, 0, vSpeed, null);
-        }
-        else
-        {
-            Debug.Log("FixMe Im Dead");
         }
 	}
 

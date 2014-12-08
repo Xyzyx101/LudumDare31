@@ -22,6 +22,10 @@ public class GoblinBehaviour : SteeringBehaviour
     private float desiredAngle;
     bool primaryAttack;
 
+	public float attackDelay = 1f;
+	private float attackDelayTimer;
+	private bool canAttack = true;
+
     void Awake()
     {
         wanderTimeActual = wanderTime;
@@ -29,7 +33,11 @@ public class GoblinBehaviour : SteeringBehaviour
 
     void Update()
     {
-
+		Debug.Log (attackDelayTimer);
+		attackDelayTimer -= Time.deltaTime;
+		if (attackDelayTimer < 0) {
+			canAttack = true;
+		}
     }
 
     void FixedUpdate()
@@ -46,7 +54,11 @@ public class GoblinBehaviour : SteeringBehaviour
 
         if (primaryWeapon != null && primaryAttack)
         {
-            primaryWeapon.SetActive(true);
+            if(canAttack) {
+				primaryWeapon.SetActive(true);
+				canAttack = false;
+				attackDelayTimer = attackDelay * Random.value + 0.2f;
+			}
         }
 
         WhatDo();

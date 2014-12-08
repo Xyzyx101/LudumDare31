@@ -25,7 +25,11 @@ public class StateGamePlaying : GameState
 				PauseGameMode();
 			}
 		}
-
+        
+        if(gameManager.playerScript.isAlive == false)
+        {
+            gameManager.NewGameState(gameManager.stateGameLost);
+        }
 	}
 	
 	public override void StateGUI() 

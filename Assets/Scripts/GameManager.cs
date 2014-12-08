@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
 	public StateGameIntro stateGameIntro{get;set;}
 	public StateGameMenu stateGameMenu{get;set;}
 
-	
+    public Texture2D gameoverIMG;
+    public Player playerScript;
+
 	private void Awake () 
 	{
 		stateGamePlaying = new StateGamePlaying(this);

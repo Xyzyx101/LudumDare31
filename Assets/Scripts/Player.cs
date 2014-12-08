@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
 	private int maxHP;
 	private int currHP;
-    private bool isAlive = true;
+    public bool isAlive { get; set; }
 
 	private int primaryDmg;
 	private int secondaryDmg;
@@ -44,9 +44,9 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        isAlive = true;
         go = false;
         CalculatePlayerStats();
-        healthScript.SetMaxHitPoints(maxHP);
     }
 
 	private void CalculatePlayerStats() 
@@ -125,7 +125,8 @@ public class Player : MonoBehaviour
 		//calc max hp and wepon damage
 		maxHP = hpPerVitality * calPlayerStats [(int)stats.Vitality];
 		currHP += maxHP - prevHP;
-		healthScript.SetMaxHitPoints(maxHP);
+        healthScript.SetMaxHitPoints(maxHP);
+        healthScript.SetHealth(currHP);
 	}
 	
 	// Update is called once per frame
@@ -302,7 +303,7 @@ public class Player : MonoBehaviour
     public void DoDamage(float damage)
     {
         currHP -= (int)damage;
-        healthScript.AlterHealth(-(int)damage);
+        healthScript.SetHealth(currHP);
         if(currHP <= 0)
         {
             isAlive = false;

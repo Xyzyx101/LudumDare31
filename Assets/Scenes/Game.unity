@@ -727,8 +727,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -131.199997}
-  m_SizeDelta: {x: 0, y: 60.9000015}
+  m_AnchoredPosition: {x: 0, y: -131}
+  m_SizeDelta: {x: 0, y: 119}
   m_Pivot: {x: .5, y: 1}
 --- !u!1 &162046925
 GameObject:
@@ -2148,6 +2148,18 @@ Prefab:
       propertyPath: curtain
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
+      propertyPath: gameoverIMG
+      value: 
+      objectReference: {fileID: 2800000, guid: 3c5f17e6698d1404098092e73d962c25, type: 3}
+    - target: {fileID: 11400002, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
+      propertyPath: playerEntity
+      value: 
+      objectReference: {fileID: 869032400}
+    - target: {fileID: 11400002, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 869032406}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 416c40ad5a550bd45800117446e1728f, type: 2}
   m_RootGameObject: {fileID: 1123574473}
@@ -2433,6 +2445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59da1a294ad32b04181622adde3ec2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameoverIMG: {fileID: 2800000, guid: 3c5f17e6698d1404098092e73d962c25, type: 3}
+  playerScript: {fileID: 869032406}
 --- !u!4 &1123574476
 Transform:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 	
 	void Update () 
 	{
-        ApplyMute();
+        //ApplyMute(); used for multi scene
 	}
 
     void LateUpdate()
@@ -89,7 +89,8 @@ public class AudioManager : MonoBehaviour
         GameObject add0 = (GameObject)Instantiate(MusicPlayer, Camera.main.transform.position, Quaternion.identity);
         Musics[0] = add0;
         Musics[0].transform.parent = gameObject.transform;
-        Musics[0].audio.mute = true;
+        //Musics[0].audio.mute = true;
+        Musics[0].audio.mute = false;
     }
 
     public void ToggleMusic(bool toggle)

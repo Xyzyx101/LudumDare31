@@ -32,7 +32,7 @@ public class StatGUI : MonoBehaviour
 
         GUILayout.EndArea();
 
-        GUILayout.BeginArea(new Rect(Screen.width * 0.02f, Screen.height * 0.3f, Screen.width * 0.2f, Screen.height * 0.1f));
+        GUILayout.BeginArea(new Rect(Screen.width * 0.02f, Screen.height * 0.35f, Screen.width * 0.2f, Screen.height * 0.1f));
 
         GUI.color = Color.black;
         if (hasPrime)

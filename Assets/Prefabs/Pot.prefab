@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
   - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
   - {fileID: 100006, guid: 6983ad3855acd7344bb1b437aa0cbd1d, type: 2}
-  chanceToSpawn: 100
+  chanceToSpawn: 30
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

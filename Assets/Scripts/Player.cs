@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 	public GameObject primaryWeapon;
 	public GameObject secondaryWeapon;
 
+	private float immunityTimer;
+
 	public class Inventory
 	{
 		public GameObject primaryWeapon;
@@ -147,6 +149,11 @@ public class Player : MonoBehaviour
                 vSpeed *= Time.deltaTime;
                 hSpeed *= Time.deltaTime;
                 transform.Translate(hSpeed, 0, vSpeed, null);
+
+				if(immunityTimer > 0)
+				{
+					immunityTimer -= Time.deltaTime;
+				}
             }
             else
             {
@@ -296,18 +303,22 @@ public class Player : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-		//apply defence to damage
-		float reduction = 100.0f / (100.0f + calPlayerStats [(int)stats.Defense]);
+		if(immunityTimer <= 0)
+		{
+			//apply defence to damage
+			float reduction = 100.0f / (100.0f + calPlayerStats [(int)stats.Defense]);
 
-		damage *= reduction;
+			damage *= reduction;
 
-        currHP -= Mathf.CeilToInt(damage);//so you always take at least 1 damage.
-        healthScript.SetHealth(currHP);
+	        currHP -= Mathf.CeilToInt(damage);//so you always take at least 1 damage.
+	        healthScript.SetHealth(currHP);
+			immunityTimer = 1.0f;
 
-        if(currHP <= 0)
-        {
-            isAlive = false;
-        }
+	        if(currHP <= 0)
+	        {
+	            isAlive = false;
+	        }
+		}
     }
 
 	public void PrimaryAttack()

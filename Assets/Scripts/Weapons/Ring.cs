@@ -2,10 +2,8 @@
 using System.Collections;
 
 public class Ring : MonoBehaviour {
-	public int chanceOfEnchant = 70;
 	public int chanceOfStat = 70;
 	public float statMultiplier = 0.25f;
-	public float DefenseToLevelMultiplyer = 0.9f;
 	
 	private int itemLevel;
 	

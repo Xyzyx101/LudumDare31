@@ -5,11 +5,11 @@ public class Ring : MonoBehaviour {
 	public int chanceOfStat = 70;
 	public float statMultiplier = 0.25f;
 	
-	private int itemLevel;
+	public int itemLevel;
 	
 	public bool enchanted = true;
 	
-	private int[] itemStats = new int[5];
+	public int[] itemStats = new int[5];
 	
 	// Use this for initialization
 	void Start () {
@@ -18,9 +18,9 @@ public class Ring : MonoBehaviour {
 		
 		for (int i = 0; i < itemStats.Length; i++)
 		{
-			if (Random.Range(0, 100) > chanceOfStat)
+			if (Random.Range(0, 100) < chanceOfStat)
 			{
-				itemStats[i] = Mathf.FloorToInt(Random.Range(0, itemLevel) * statMultiplier); //does not have negatives
+				itemStats[i] = Mathf.FloorToInt(Random.Range(itemLevel * 0.4f, itemLevel) * statMultiplier); //does not have negatives
 			}
 			else
 			{

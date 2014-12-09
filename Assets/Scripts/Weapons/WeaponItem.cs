@@ -24,7 +24,7 @@ public class WeaponItem : MonoBehaviour {
 		
 		for (int i = 0; i < itemStats.Length; i++)
 		{
-			if (Random.Range(0, 100) > chanceOfStat)
+			if (Random.Range(0, 100) < chanceOfStat)
 			{
 				itemStats[i] = Mathf.FloorToInt(Random.Range(0, itemLevel) * statMultiplier - (itemLevel * statMultiplier * 0.5f));
 			}
@@ -34,7 +34,7 @@ public class WeaponItem : MonoBehaviour {
 			}
 		}
 		
-		if (Random.Range (0, 100) > chanceOfEnchant)
+		if (Random.Range (0, 100) < chanceOfEnchant)
 		{
 			enchanted = true;
 		}

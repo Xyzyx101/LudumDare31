@@ -42,8 +42,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOfStat: 85
-  statMultiplier: .300000012
+  statMultiplier: .5
+  itemLevel: 0
   enchanted: 1
+  itemStats: 0000000000000000000000000000000000000000
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

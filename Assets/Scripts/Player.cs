@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	public float speedMultiplier = 15;
+	public float baseSpeed = 150.0F;
 	public float speed = 150.0F;
 	public float turnSpeed = 0.1f;
 	public Transform target;
@@ -138,7 +138,10 @@ public class Player : MonoBehaviour
         healthScript.SetMaxHitPoints(maxHP);
         healthScript.SetHealth(currHP);
 		//calc speed
-		speed = speedMultiplier * calPlayerStats[(int)stats.Speed];	}
+		speed = baseSpeed * (1.0f + (calPlayerStats[(int)stats.Speed] * 0.01f ));
+		if (calPlayerStats [(int)stats.Speed] > 100.0f)
+			speed = baseSpeed * 2.0f;
+	}
 	
 	// Update is called once per frame
 	void Update() 

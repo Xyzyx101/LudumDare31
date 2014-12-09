@@ -49,10 +49,15 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        isAlive = true;
-        go = false;
-        CalculatePlayerStats();
+		Reset();   
     }
+
+	public void Reset()
+	{
+		isAlive = true;
+		go = false;
+		CalculatePlayerStats();
+	}
 
 	private void CalculatePlayerStats() 
 	{

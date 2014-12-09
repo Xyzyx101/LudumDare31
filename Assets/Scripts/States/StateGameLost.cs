@@ -16,8 +16,8 @@ public class StateGameLost : GameState
 		timer -= Time.deltaTime;
 		if ( timer <= 0)
 		{
-			gameManager.NewGameState( gameManager.stateGameMenu );	
 			Application.LoadLevel("Game");
+			gameManager.NewGameState( gameManager.stateGameMenu );	
 		}
 	}
 	

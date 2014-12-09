@@ -8,6 +8,7 @@ public class StateGameMenu : GameState
 	public override void OnStateEntered()
 	{
         Time.timeScale = 0.0f;
+		GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Reset();
 	}
 	public override void OnStateExit(){}
 	public override void StateUpdate() {}

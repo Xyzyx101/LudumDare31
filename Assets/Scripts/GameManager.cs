@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
 		{
 			currentState.OnStateExit();
 		}
+
+		playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		currentState = newState;
 		currentState.OnStateEntered();
 	}

@@ -45,6 +45,7 @@ MonoBehaviour:
   chanceOfStat: 70
   statMultiplier: .25
   DamageToLevelMultiplyer: .5
+  charges: 0
   enchanted: 0
 --- !u!135 &13500000
 SphereCollider:
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0888af341b900549944781d00e2a2a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00cb5ac8b596d0f4cbfac5cade43eaf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

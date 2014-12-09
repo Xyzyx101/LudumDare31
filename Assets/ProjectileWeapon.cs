@@ -28,6 +28,7 @@ public class ProjectileWeapon : MonoBehaviour {
 	void Update () {
 		shootTime -= Time.deltaTime;
 		if (canShoot) {
+			PlaySound();
 			charges--;
 			GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
 			Projectile newProjectile = gameObject.GetComponentInChildren<Projectile>();
@@ -42,5 +43,18 @@ public class ProjectileWeapon : MonoBehaviour {
 			}
 			gameObject.SetActive(false);
 		}
-	}	
+	}
+	void PlaySound() {
+		switch (this.name) {
+		case "dagger-weapon" :
+			AudioManager.Instance.PlaySound("dagger");
+			break;
+		case "crossbow-weapon" :
+			AudioManager.Instance.PlaySound("bow");
+			break;
+		case "fireball-weapon" :
+			AudioManager.Instance.PlaySound("fireballShot");
+			break;
+		}
+	}
 }

@@ -42,10 +42,12 @@ public class RaycastMouse : MonoBehaviour
 			if(Input.GetMouseButtonUp(0))
 			{
 				playerScript.PickupPrimaryItem(worldPos, hit.collider.gameObject);
+                AudioManager.Instance.PlaySound("pickUp");
 			}
 			else if (Input.GetMouseButtonUp(1))
 			{
 				playerScript.PickupSecondaryItem(worldPos, hit.collider.gameObject);
+                AudioManager.Instance.PlaySound("pickUp");
 			}
 		}
 		else
@@ -55,6 +57,7 @@ public class RaycastMouse : MonoBehaviour
 			if(Input.GetMouseButtonUp(0))
 			{
 				playerScript.PrimaryAttack();
+                PlayPrimeAttack();
 			}
 			else if (Input.GetMouseButtonUp(1))
 			{
@@ -69,4 +72,37 @@ public class RaycastMouse : MonoBehaviour
 		worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseCoord.x, mouseCoord.y, 20));
 		playerScript.UpdateDirection(worldPos);
 	}
+
+    private void PlayPrimeAttack()
+    {
+
+        if (playerScript.inventory.primaryWeapon == null)
+        {
+            AudioManager.Instance.PlaySound("punch");
+        }
+        else if(playerScript.inventory.primaryWeapon.name == "SwordItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("sword");
+        }
+        else if (playerScript.inventory.primaryWeapon.name == "AxeItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("axe");
+        }
+        else if (playerScript.inventory.primaryWeapon.name == "SpearItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("spear");
+        }
+        else if (playerScript.inventory.primaryWeapon.name == "DaggerItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("dagger");
+        }
+        else if (playerScript.inventory.primaryWeapon.name == "crossbowItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("bow");
+        }
+        else if (playerScript.inventory.primaryWeapon.name == "StaffItem" + "(Clone)")
+        {
+            AudioManager.Instance.PlaySound("fireballShot");
+        }
+    }
 } 

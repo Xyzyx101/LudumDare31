@@ -34,7 +34,6 @@ public class AudioManager : MonoBehaviour
 	void Start () 
 	{
         Musics = new GameObject[musicAmount];
-        Sounds = new AudioClip[0];
         FillMusics();
 	}
 	

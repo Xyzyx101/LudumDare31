@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public StatGUI statGui;
 
     public static bool go { get; set; }
+    public bool playsound = false; 
 
     void Awake()
     {
@@ -307,6 +308,11 @@ public class Player : MonoBehaviour
         if(currHP <= 0)
         {
             isAlive = false;
+            if(!playsound)
+            {
+                AudioManager.Instance.PlaySound("playerDeath");
+                playsound = true;
+            }
         }
     }
 

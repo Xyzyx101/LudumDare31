@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour
     public GameObject[] Spawnable;
     public int chanceToSpawn = 25;
     private bool dropCheck = true;
+    private bool soundPlayed = false;
 
     void Awake()
     {
@@ -28,6 +29,12 @@ public class EnemyStats : MonoBehaviour
     {
         if (hp <= 0)
         {
+            if(!soundPlayed)
+            {
+                AudioManager.Instance.PlaySound("goblinDeath");
+                soundPlayed = true;
+            }
+
             if (Random.Range(0, 100) < chanceToSpawn && dropCheck)
             {
                 dropCheck = false;

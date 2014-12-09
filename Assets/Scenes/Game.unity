@@ -2093,10 +2093,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconArrow: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
   arrowRegPoint: {x: 0, y: 0}
-  iconAttack: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
-  attackRegPoint: {x: 0, y: 0}
-  iconTalk: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
-  talkRegPoint: {x: 0, y: 0}
   iconInteract: {fileID: 2800000, guid: 3c35d169da1fdc945b3a815ab2e0ff89, type: 3}
   interactRegPoint: {x: 0, y: 0}
   playerScript: {fileID: 869032406}
@@ -2121,6 +2117,7 @@ MonoBehaviour:
   secondaryWeapon: {fileID: 422715184}
   healthScript: {fileID: 869032402}
   statGui: {fileID: 869032409}
+  playsound: 0
 --- !u!95 &869032408
 Animator:
   serializedVersion: 3

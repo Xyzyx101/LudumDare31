@@ -23,7 +23,7 @@ public class StateGameLost : GameState
 	
 	public override void StateGUI() 
 	{
-		GUILayout.Label("state: GAME LOST. \t timer: " + timer);
+		//GUILayout.Label("state: GAME LOST. \t timer: " + timer);
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), gameManager.gameoverIMG);
 	}
